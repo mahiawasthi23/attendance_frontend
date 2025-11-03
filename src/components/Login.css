@@ -1,83 +1,142 @@
-/* General container styling */
-.container {
+/* ---------- Page Container ---------- */
+.login-container {
   min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #74b9ff, #a29bfe);
+  align-items: center;
+  background: #f8f9fd;
   font-family: "Poppins", sans-serif;
+  padding: 20px;
 }
 
-/* Login box */
-.auth-container {
+/* ---------- Card ---------- */
+.login-card {
   background: #fff;
   padding: 40px 35px;
-  border-radius: 15px;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
+  text-align: left;
 }
 
-/* Heading */
-.auth-container h3 {
-  font-weight: 600;
-  color: #2d3436;
+/* ---------- Title ---------- */
+.login-title {
   text-align: center;
-  margin-bottom: 25px;
+  color: #111827;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
-/* Input fields */
-.form-control {
-  height: 45px;
-  border: 1.5px solid #dcdde1;
+.login-subtitle {
+  text-align: center;
+  color: #6b7280;
+  font-size: 15px;
+  margin-bottom: 28px;
+}
+
+/* ---------- Form Labels ---------- */
+.login-label {
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* ---------- Input Group ---------- */
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 45px 12px 15px;
+  border: 1.5px solid #d1d5db;
   border-radius: 10px;
-  padding: 10px 15px;
-  transition: 0.3s;
-}
-
-.form-control:focus {
-  border-color: #0984e3;
-  box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.2);
+  background: #fafbfc;
+  font-size: 15px;
+  color: #111827;
   outline: none;
+  transition: all 0.3s ease;
 }
 
-/* Login button */
-.auth-btn {
-  background-color: #0984e3;
-  color: white;
+.input-group input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  background: #fff;
+}
+
+/* ---------- Password Eye ---------- */
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.password-toggle:hover {
+  color: #3b82f6;
+}
+
+/* ---------- Button ---------- */
+.login-btn {
+  width: 100%;
+  background-color: #3b82f6;
+  color: #fff;
   border: none;
   border-radius: 10px;
-  padding: 10px;
+  padding: 12px;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
 }
 
-.auth-btn:hover {
-  background-color: #74b9ff;
+.login-btn:hover {
+  background-color: #2563eb;
 }
 
-/* Register link section */
-.auth-link {
-  color: #0984e3;
+/* ---------- Forgot Password ---------- */
+.forgot-link {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.forgot-link a {
+  color: #3b82f6;
   text-decoration: none;
+  font-size: 14px;
   font-weight: 500;
 }
 
-.auth-link:hover {
+.forgot-link a:hover {
   text-decoration: underline;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .auth-container {
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .login-card {
     padding: 30px 25px;
   }
 
-  .form-control {
-    height: 42px;
+  .login-title {
+    font-size: 22px;
   }
 
-  .auth-btn {
-    padding: 9px;
+  .input-group input {
+    font-size: 14px;
+    padding: 11px 40px 11px 13px;
+  }
+
+  .login-btn {
+    font-size: 15px;
   }
 }

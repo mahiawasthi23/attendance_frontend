@@ -1,72 +1,116 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
+import "./SignUp.css";
 
 function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [role, setRole] = useState("student");
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
+
     if (!name || !email || !password) {
       alert("Please fill all fields");
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const userExists = users.find((u) => u.email === email);
-
-    if (userExists) {
-      alert("User already registered");
+    if (!email.endsWith("@navgurukul.org")) {
+      alert("Only @navgurukul.org emails are allowed!");
       return;
     }
 
-    const newUser = { name, email, password, role: "student" };
-    users.push(newUser);
-    localStorage.setItem("users", JSON.stringify(users));
+    try {
+      const response = await fetch(
+        "https://attendance-backend-3fjj.onrender.com/api/auth/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email, password, role }),
+        }
+      );
 
-    alert("Registration successful!");
-    navigate("/login");
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Registration successful!");
+        navigate("/login");
+      } else {
+        alert(data.message || "Something went wrong");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Server error. Please try again later.");
+    }
   };
 
   return (
-    <div className="container d-flex justify-content-center">
-      <div className="col-md-5 auth-container">
-        <h3 className="text-center mb-4">Register</h3>
-        <form onSubmit={handleRegister}>
+    <div className="signup-container">
+      <form className="signup-form" onSubmit={handleRegister}>
+        <h2>Create Your Account</h2>
+
+        {/* Full Name */}
+        <div className="input-group">
+          <FaUser className="input-icon" />
           <input
             type="text"
-            className="form-control mb-3"
-            placeholder="Full Name"
+            placeholder="Enter your full name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
+        </div>
+
+        {/* Email */}
+        <div className="input-group">
+          <FaEnvelope className="input-icon" />
           <input
             type="email"
-            className="form-control mb-3"
-            placeholder="Email"
+            placeholder="Enter your email or ID"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+        </div>
+
+        {/* Password */}
+        <div className="input-group password-group">
+          <FaLock className="input-icon" />
           <input
-            type="password"
-            className="form-control mb-3"
-            placeholder="Password"
+            type={showPassword ? "text" : "password"}
+            placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit" className="btn auth-btn w-100">
-            Register
-          </button>
-        </form>
-        <p className="mt-3 text-center">
-          Already have an account?{" "}
-          <a href="/login" className="auth-link">
-            Login
-          </a>
+          <span
+            className="toggle-password"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? "🙈" : "👁️"}
+          </span>
+        </div>
+
+        {/* Role */}
+        <div className="input-group">
+          <select value={role} onChange={(e) => setRole(e.target.value)}>
+            <option value="student">Student</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+
+        {/* Button */}
+        <button type="submit" className="signup-btn">
+          Sign Up
+        </button>
+
+        <p className="login-text">
+          Already have an account? <a href="/login">Login</a>
         </p>
-      </div>
+      </form>
     </div>
   );
 }
