@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-function Login() {
+function Login({ onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -13,11 +13,15 @@ function Login() {
     const user = users.find((u) => u.email === email && u.password === password);
 
     if (user) {
-      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      onLogin(user);
       alert("Login successful!");
-      navigate("/account");
+      if (user.role === "admin") {
+        navigate("/admin-dashboard");
+      } else {
+        navigate("/student-dashboard");
+      }
     } else {
-      alert("No account found. Please register first");
+      alert("No account found. Please register first.");
     }
   };
 
@@ -46,7 +50,7 @@ function Login() {
         </form>
         <p className="mt-3 text-center">
           Don't have an account?{" "}
-          <a href="/register" className="auth-link">
+          <a href="/signup" className="auth-link">
             Register New Account
           </a>
         </p>

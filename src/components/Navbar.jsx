@@ -21,14 +21,13 @@ const Navbar = ({ isLoggedIn, userRole, onLogout }) => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* Logo */}
         <div className="navbar-left">
           <Link to="/" className="navbar_logo" onClick={handleLinkClick}>
             AJMF + Navgurukul
           </Link>
         </div>
 
-        {/* Hamburger Menu */}
+   
         <button
           className={`hamburger ${menuOpen ? "active" : ""}`}
           onClick={toggleMenu}
@@ -39,7 +38,7 @@ const Navbar = ({ isLoggedIn, userRole, onLogout }) => {
           <span />
         </button>
 
-        {/* Navbar Links */}
+
         <div className={`navbar-right ${menuOpen ? "open" : ""}`}>
           <Link to="/" className="nav-link" onClick={handleLinkClick}>
             Home

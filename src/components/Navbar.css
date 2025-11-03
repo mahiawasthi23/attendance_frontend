@@ -2,7 +2,7 @@
   --primary-color: #0a1f43;
 }
 
-/* Navbar Base */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -18,7 +18,7 @@
   box-sizing: border-box;
 }
 
-/* Inner container for centering */
+
 .navbar-container {
   width: 100%;
   max-width: 1200px;
@@ -29,7 +29,7 @@
   box-sizing: border-box;
 }
 
-/* Logo */
+
 .navbar_logo {
   font-weight: 900;
   font-size: 1.25rem;
@@ -37,14 +37,14 @@
   text-decoration: none;
 }
 
-/* Navbar Right Links */
+
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 1.5rem;
 }
 
-/* Links */
+
 .nav-link {
   color: white;
   text-decoration: none;
@@ -69,13 +69,13 @@
   cursor: pointer;
 }
 
-/* Profile icon */
+
 .profile-icon {
   font-size: 1.25rem;
   user-select: none;
 }
 
-/* Hamburger */
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -109,7 +109,7 @@
   transform: rotate(-45deg);
 }
 
-/* Mobile Responsive */
+
 @media (max-width: 900px) {
   .hamburger {
     display: flex;
@@ -137,7 +137,7 @@
   }
 }
 
-/* Animation */
+
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -149,15 +149,6 @@
   }
 }
 
-/* Prevent overlap with content */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #f6f7f8;
-  color: #111417;
-  box-sizing: border-box;
-}
 
 .content-wrapper {
   margin-top: 56px;

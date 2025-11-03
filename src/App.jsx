@@ -1,38 +1,52 @@
-import React, {useState} from 'react'
-import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './components/Home'
-import Navbar from './components/Navbar'
-import SignUp from './components/SignUp'
-import Login from './components/Login'
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import SignUp from "./components/SignUp";
+import Login from "./components/Login";
+import StudentDashboard from "./Dashboard/StudentDashboard";
+import AdminDashboard from "./Dashboard/AdminDashboard";
 
 function App() {
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState(null);
 
-  const handleLogin = (role) => {
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (user) {
+      setIsLoggedIn(true);
+      setUserRole(user.role || "student");
+    }
+  }, []);
+
+  const handleLogin = (user) => {
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
     setIsLoggedIn(true);
-    setUserRole(role);
+    setUserRole(user.role || "student");
   };
-  
+
   const handleLogout = () => {
+    localStorage.removeItem("loggedInUser");
     setIsLoggedIn(false);
     setUserRole(null);
   };
-  
+
   return (
     <Router>
-       <Navbar isLoggedIn={isLoggedIn} userRole={userRole} onLogout={handleLogout} />
+      <Navbar isLoggedIn={isLoggedIn} userRole={userRole} onLogout={handleLogout} />
       <div>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path="/signUp" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login onLogin={handleLogin} />} />
+          <Route path="/student-dashboard" element={<StudentDashboard />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
         </Routes>
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
