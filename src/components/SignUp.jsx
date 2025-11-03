@@ -9,7 +9,6 @@ function SignUp() {
 
   const handleRegister = (e) => {
     e.preventDefault();
-
     if (!name || !email || !password) {
       alert("Please fill all fields");
       return;
@@ -23,8 +22,10 @@ function SignUp() {
       return;
     }
 
-    users.push({ name, email, password });
+    const newUser = { name, email, password, role: "student" };
+    users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
+
     alert("Registration successful!");
     navigate("/login");
   };
