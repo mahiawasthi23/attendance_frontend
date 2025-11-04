@@ -1,52 +1,129 @@
-.student_card {
-  background: #fff;
-  width: 400px;
-  padding: 40px 30px;
+.student-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
+  font-family: "Poppins", sans-serif;
+}
+
+
+.student_sidebar {
+  flex: 0 0 230px;
+}
+
+
+.dashboard-content {
+  flex: 1;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard-content h2 {
+  font-size: 26px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+
+.status-card {
+  width: 90%;
+  max-width: 450px;
+  padding: 30px 20px;
   border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin-bottom: 25px;
   transition: all 0.3s ease;
 }
 
-.student_card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.student_heading {
-  font-size: 1.8rem;
-  color: #2a2a72;
-  margin-bottom: 15px;
+.status-card h3 {
+  font-size: 20px;
+  color: #222;
+  margin-bottom: 10px;
 }
 
-.student_text {
-  font-size: 1rem;
+.status-card p {
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 8px 0 0;
+}
+
+
+.status.present {
+  color: #2e7d32; 
+}
+
+.status.absent {
+  color: #d32f2f; 
+}
+
+.status.leave {
+  color: #1976d2; 
+}
+
+.status.kitchen-turn {
+  color: #f57c00; 
+}
+
+.status.loading {
   color: #555;
-  margin-bottom: 20px;
 }
 
-.student_button {
-  background-color: #2a2a72;
-  color: #fff;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
+
+.note {
+  text-align: center;
+  color: #555;
+  font-size: 13px;
+  margin-top: 15px;
 }
 
-.student_button:hover {
-  background-color: #4343a3;
-}
 
-/* Responsive */
-@media (max-width: 480px) {
-  .student_card {
-    width: 90%;
-    padding: 30px 20px;
+@media (max-width: 900px) {
+  .student-dashboard {
+    flex-direction: column;
   }
 
-  .student_heading {
-    font-size: 1.5rem;
+  .student_sidebar {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  .dashboard-content {
+    width: 100%;
+    padding: 25px 15px;
+  }
+
+  .status-card {
+    width: 100%;
+    padding: 25px 15px;
+  }
+
+  .dashboard-content h2 {
+    font-size: 22px;
   }
 }
+
+@media (max-width: 500px) {
+  .status-card h3 {
+    font-size: 18px;
+  }
+
+  .status-card p {
+    font-size: 20px;
+  }
+
+  .note {
+    font-size: 12px;
+  }
+}
+
