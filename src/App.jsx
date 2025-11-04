@@ -9,6 +9,8 @@ import StudentDashboard from "./Dashboard/StudentDashboard";
 import AdminDashboard from "./Dashboard/AdminDashboard";
 import QRScannerInitial from "./Pages/QRScannerInitial";
 import QRScanPage from "./Pages/QRScanPage";
+import KitchenTurnForm from "./Pages/KitchenTurnForm";
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -47,6 +49,7 @@ function App() {
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/qr-scanner" element={<QRScannerInitial />} />
           <Route path="/qr-scan" element={<QRScanPage />} />
+          <Route path="/kitchen-turn" element={<KitchenTurnForm />} />
         </Routes>
       </div>
     </Router>
