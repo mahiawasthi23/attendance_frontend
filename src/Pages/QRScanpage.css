@@ -2,87 +2,90 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: radial-gradient(circle at top, #0a192f, #020c1b);
-  font-family: "Poppins", sans-serif;
-  color: #fff;      
+  min-height: 100vh;
+  background: linear-gradient(135deg, #96cbf3, #e2effa);
+  padding: 1rem;
 }
 
-.glass-effect {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  box-shadow: 0 0 25px rgba(0, 255, 100, 0.3);
-}
 
 .Page-qrscanner-card {
-  width: 380px;
-  height: 80vh;
-  padding: 2px 20px;
-  margin-top: 5%;
+  width: 100%;
+  max-width: 420px;
+  margin-top: 6%;
+  height: 75%;
+  background: rgba(22, 2, 134, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
 }
+
+.Page-glass-effect {
+  backdrop-filter: blur(12px);
+  background: rgba(2, 5, 7, 0.6);
+}
+
 
 .Page-qrscanner-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 0rem;
 }
 
 .Page-back-btn {
   background: none;
   border: none;
-  color: #00ff88;
   cursor: pointer;
-  transition: 0.3s;
+  color: blue;
+  transition: color 0.3s;
 }
 
 .Page-back-btn:hover {
-  transform: scale(1.1);
-  color: #00ffaa;
+  color: #1976d2;
 }
 
 .Page-qrscanner-header h3 {
-  flex: 1;
-  text-align: center;
-  color: #00ffaa;
+ align-items: center;
+  font-size: 1.2rem;
   font-weight: 600;
+  color: white;
 }
 
+
 .Page-qrscanner-info h4 {
-  margin: 0px;
-  font-weight: 500;
+  font-size: 1rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  color: #111;
 }
 
 .Page-timer-label {
   font-size: 0.9rem;
-  opacity: 0.8;
+  color: #555;
 }
 
 .Page-countdown {
-  display: inline-block;
-  background: rgba(0, 255, 136, 0.15);
-  border: 1px solid rgba(0, 255, 136, 0.4);
-  padding: 5px 16px;
-  border-radius: 12px;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: bold;
-  color: #00ffaa;
+  color: #1e88e5;
+  margin-top: 0rem;
 }
 
 .Page-scanner-box {
-  margin-top: 5px;
+  margin-top: 0rem;
+  position: relative;
 }
 
 .Page-scanner-frame {
-  width: 260px;
-  height: 50%;
-  margin: 0 auto;
-  border: 3px solid #00ffaa;
-  border-radius: 15px;
+  border: 3px solid #1976d2;
+  border-radius: 12px;
   overflow: hidden;
-  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  max-height: 400px;
 }
 
 .Page-scanner-video {
@@ -92,50 +95,144 @@
 }
 
 .Page-scanner-hint {
-  margin-top: 5px;
   font-size: 0.95rem;
-  opacity: 0.8;
+  color: #555;
+  margin-top: 0rem;
 }
 
 .Page-scanner-result {
-  margin-top: 2px;
-  font-weight: 500;
+  margin-top: 0rem;
   font-size: 1rem;
-  color: #00ff99;
+  font-weight: 500;
+  color: #2e7d32;
 }
 
 .Page-cant-scan {
   display: inline-block;
-  margin-top: 0px;
-  color: #00ffaa;
-  text-decoration: none;
+  margin-top: 0.6rem;
+  color: #1976d2;
   font-size: 0.9rem;
-  transition: 0.3s;
+  text-decoration: none;
 }
 
 .Page-cant-scan:hover {
   text-decoration: underline;
-  color: #80ffd3;
 }
 
 
-.Page-scanner-frame::before {
-  content: "";
-  position: absolute;
+.Page-success-popup, .Page-error-popup {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #00ffaa, transparent);
-  animation: scanLine 2s linear infinite;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
 }
 
-@keyframes scanLine {
-  0% {
-    top: 0;
+.Page-popup-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  width: 90%;
+  max-width: 340px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+.Page-checkmark {
+  font-size: 3rem;
+  color: #22c55e;
+  margin-bottom: 1rem;
+}
+
+.Page-crossmark {
+  font-size: 3rem;
+  color: #ef4444;
+  margin-bottom: 0rem;
+}
+
+.Page-popup-card h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.Page-popup-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0.5rem 0 1rem;
+}
+
+.Page-view-status-btn {
+  background: #22c55e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  max-width: 240px;
+  transition: background 0.3s;
+}
+
+.Page-view-status-btn:hover {
+  background: #16a34a;
+}
+
+.Page-popup-card small {
+  display: block;
+  margin-top: 0.7rem;
+  color: #999;
+  font-size: 0.85rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+@media (max-width: 768px) {
+  .Page-qrscanner-card {
+    padding: 1.2rem;
+    margin-top: 10%;
   }
-  100% {
-    top: 100%;
+  .Page-qrscanner-header h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0px;
+  }
+  .Page-countdown {
+    font-size: 1.2rem;
+  }
+  .Page-popup-card {
+    padding: 1.5rem;
   }
 }
 
+@media (max-width: 480px) {
+  .Page-qrscanner-card {
+    max-width: 95%;
+    margin-top: 5%;
+  }
+  .Page-scanner-frame {
+    border-width: 2px;
+    aspect-ratio: 3/4;
+  }
+  .popup-card {
+    padding: 1rem;
+    width: 92%;
+  }
+  .Page-popup-card h2 {
+    font-size: 1.2rem;
+  }
+  .Page-view-status-btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
