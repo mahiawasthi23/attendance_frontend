@@ -10,6 +10,7 @@ import AdminDashboard from "./Dashboard/AdminDashboard";
 import QRScannerInitial from "./Pages/QRScannerInitial";
 import QRScanPage from "./Pages/QRScanPage";
 import KitchenTurnForm from "./Pages/KitchenTurnForm";
+import LeaveForm from "./Pages/LeaveForm";
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
           <Route path="/qr-scanner" element={<QRScannerInitial />} />
           <Route path="/qr-scan" element={<QRScanPage />} />
           <Route path="/kitchen-turn" element={<KitchenTurnForm />} />
+          <Route path="/leave-form" element={<LeaveForm />} />
         </Routes>
       </div>
     </Router>
