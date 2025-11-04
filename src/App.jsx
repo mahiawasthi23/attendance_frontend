@@ -46,7 +46,7 @@ function App() {
           <Route path="/student-dashboard" element={<StudentDashboard />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/qr-scanner" element={<QRScannerInitial />} />
-          <Route path="/qr-scan-page" element={<QRScanPage />} />
+          <Route path="/qr-scan" element={<QRScanPage />} />
         </Routes>
       </div>
     </Router>

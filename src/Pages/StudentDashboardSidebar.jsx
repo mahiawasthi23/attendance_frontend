@@ -1,3 +1,4 @@
+
 import React from "react";
 import { FaQrcode, FaUtensils, FaHistory } from "react-icons/fa";
 import {
@@ -7,43 +8,39 @@ import {
   MdOutlineTrackChanges,
 } from "react-icons/md";
 import "./StudentDashboardSidebar.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function StudentDashboardSidebar() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const menuItems = [
+    { icon: <MdDashboard />, label: "Dashboard", path: "/student-dashboard" },
+    { icon: <FaQrcode />, label: "QR Scanner", path: "/qr-scanner" },
+    { icon: <FaUtensils />, label: "Kitchen Turn", path: "/kitchen-turn" },
+    { icon: <MdOutlineHome />, label: "Leave Form", path: "/leave-form" },
+    { icon: <MdOutlineEdit />, label: "Correction Request", path: "/correction-request" },
+    { icon: <MdOutlineTrackChanges />, label: "Student Tracking", path: "/student-tracking" },
+    { icon: <FaHistory />, label: "View History", path: "/view-history" },
+  ];
 
   return (
     <div className="student_sidebar">
       <h2 className="student_sidebar_logo">Student Panel</h2>
+
       <ul className="student_sidebar_menu">
-        <li className="student_sidebar_item active" onClick={() => navigate("/student-dashboard")}>
-          <MdDashboard className="student_sidebar_icon" />
-          <span>Dashboard</span>
-        </li>
-        <li className="student_sidebar_item" onClick={() => navigate("/qr-scanner")}>
-          <FaQrcode className="student_sidebar_icon" />
-          <span>QR Scanner</span>
-        </li>
-        <li className="student_sidebar_item" onClick={() => navigate("/kitchen-turn")}>
-          <FaUtensils className="student_sidebar_icon" />
-          <span>Kitchen Turn</span>
-        </li>
-        <li className="student_sidebar_item"  onClick={() => navigate("/leave-form")}>
-          <MdOutlineHome className="student_sidebar_icon" />
-          <span>Leave Form</span>
-        </li>
-        <li className="student_sidebar_item" onClick={() => navigate("/correction-request")}>
-          <MdOutlineEdit className="student_sidebar_icon" />
-          <span>Correction Request</span>
-        </li>
-        <li className="student_sidebar_item" onClick={() => navigate("/student-tracking")}>
-          <MdOutlineTrackChanges className="student_sidebar_icon" />
-          <span>Student Tracking</span>
-        </li>
-        <li className="student_sidebar_item" onClick={() => navigate("/view-history")}>
-          <FaHistory className="student_sidebar_icon" />
-          <span>View History</span>
-        </li>
+        {menuItems.map((item) => (
+          <li
+            key={item.label}
+            className={`student_sidebar_item ${
+              location.pathname === item.path ? "active" : ""
+            }`}
+            onClick={() => navigate(item.path)}
+          >
+            <span className="student_sidebar_icon">{item.icon}</span>
+            <span>{item.label}</span>
+          </li>
+        ))}
       </ul>
     </div>
   );

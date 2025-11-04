@@ -1,87 +1,92 @@
 .student_sidebar {
   width: 240px;
-  background: #fff;
-  height: 100%;
-  border-right: 1px solid #e6e6e6;
-  padding: 50px 0;
+  height: 100vh;
+  background: rgba(9, 132, 227, 0.9);
+  backdrop-filter: blur(10px);
+  color: white;
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
+  align-items: center;
+  padding: 30px 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 
 .student_sidebar_logo {
-  font-size: 1.4rem;
+  font-size: 22px;
   font-weight: 600;
-  text-align: center;
-  color: #2a2a72;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  color: #fff;
 }
 
 .student_sidebar_menu {
   list-style: none;
   padding: 0;
-  margin: 0;
+  width: 100%;
 }
 
 .student_sidebar_item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 20px;
-  color: #444;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  margin-bottom: 10px;
   cursor: pointer;
-  font-size: 1rem;
   transition: all 0.3s ease;
-  border-left: 4px solid transparent;
-}
-
-.student_sidebar_item:hover {
-  background-color: #f3f6ff;
-  color: #2a2a72;
-}
-
-.student_sidebar_item.active {
-  background-color: #eef2ff;
-  color: #2a2a72;
-  border-left: 4px solid #2a2a72;
+  color: #f1f2f6;
 }
 
 .student_sidebar_icon {
-  font-size: 1.3rem;
+  font-size: 20px;
 }
 
-/* Responsive */
+.student_sidebar_item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(5px);
+}
+
+.student_sidebar_item.active {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-weight: 600;
+  border-left: 4px solid #ffeaa7;
+}
+
+
 @media (max-width: 768px) {
   .student_sidebar {
-    width: 200px;
-  }
-}
-
-@media (max-width: 576px) {
-  .student_sidebar {
-    width: 70px;
-    align-items: center;
-  }
-
-  .student_sidebar_item span {
-    display: none;
+    position: fixed;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    top: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
   }
 
   .student_sidebar_logo {
     display: none;
   }
-}
 
-/* Layout integration for dashboard */
-.student_dashboard_wrapper {
-  display: flex;
-  min-height: 100vh;
-  background-color: #f8f9ff;
-}
+  .student_sidebar_menu {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
 
-.student_dashboard_main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .student_sidebar_item {
+    flex-direction: column;
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .student_sidebar_icon {
+    font-size: 18px;
+  }
 }
