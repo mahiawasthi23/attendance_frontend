@@ -1,0 +1,106 @@
+.kitchen-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4ff, #ffffff);
+  font-family: "Poppins", sans-serif;
+}
+
+.kitchen-form {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 25px;
+  border-radius: 15px;
+  width: 320px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.kitchen-form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.kitchen-form input {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.kitchen-form button {
+  background: #00b894;
+  color: white;
+  padding: 10px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  transition: background 0.2s ease;
+}
+
+.kitchen-form button:hover {
+  background: #019d7e;
+}
+
+
+.popup-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content h3 {
+  margin: 10px 0;
+}
+
+.popup-content .icon {
+  font-size: 2rem;
+}
+
+.popup-box.success .popup-content {
+  border-top: 6px solid #00b894;
+}
+
+.popup-box.error .popup-content {
+  border-top: 6px solid #d63031;
+}
+
+.popup-content button {
+  margin-top: 10px;
+  background: #00b894;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.popup-box.error .popup-content button {
+  background: #d63031;
+}
+
+@media (max-width: 480px) {
+  .kitchen-form {
+    width: 90%;
+  }
+}
