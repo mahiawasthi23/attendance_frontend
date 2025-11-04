@@ -6,7 +6,7 @@ const KitchenTurnForm = () => {
   const [popup, setPopup] = useState({ type: "", message: "" });
   const [loading, setLoading] = useState(false);
 
-  const token = localStorage.getItem("token"); 
+  const token = localStorage.getItem("token");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +24,7 @@ const KitchenTurnForm = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(formData),
         }
@@ -41,7 +41,9 @@ const KitchenTurnForm = () => {
       } else {
         setPopup({
           type: "error",
-          message: data.message || "⚠️ Failed to submit. Please try again.",
+          message:
+            data.message ||
+            "⚠️ You might have already filled this form for today.",
         });
       }
     } catch (error) {
