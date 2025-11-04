@@ -1,142 +1,120 @@
-/* ---------- Page Container ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
 .login-container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f8f9fd;
-  font-family: "Poppins", sans-serif;
+  background: #f4f6fc;
   padding: 20px;
 }
 
-/* ---------- Card ---------- */
 .login-card {
-  background: #fff;
+  background: #ffffff;
   padding: 40px 35px;
-  border-radius: 20px;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 380px;
-  text-align: left;
+  max-width: 400px;
+  text-align: center;
 }
 
-/* ---------- Title ---------- */
 .login-title {
-  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
   color: #111827;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .login-subtitle {
-  text-align: center;
+  font-size: 14px;
   color: #6b7280;
-  font-size: 15px;
-  margin-bottom: 28px;
+  margin-bottom: 30px;
 }
 
-/* ---------- Form Labels ---------- */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .login-label {
+  text-align: left;
   font-size: 14px;
   color: #374151;
-  font-weight: 500;
   margin-bottom: 5px;
-  display: block;
 }
 
-/* ---------- Input Group ---------- */
+.login-form input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  font-size: 14px;
+  transition: border 0.3s ease;
+}
+
+.login-form input:focus {
+  border-color: #3b82f6;
+}
+
 .input-group {
   position: relative;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
 }
 
-.input-group input {
-  width: 100%;
-  padding: 12px 45px 12px 15px;
-  border: 1.5px solid #d1d5db;
-  border-radius: 10px;
-  background: #fafbfc;
-  font-size: 15px;
-  color: #111827;
-  outline: none;
-  transition: all 0.3s ease;
+.password-group input {
+  padding-right: 40px;
 }
 
-.input-group input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-  background: #fff;
-}
-
-/* ---------- Password Eye ---------- */
 .password-toggle {
   position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #6b7280;
-  font-size: 18px;
+  right: 12px;
   cursor: pointer;
-  transition: color 0.3s;
+  color: #9ca3af;
+  font-size: 16px;
+  transition: color 0.3s ease;
 }
 
 .password-toggle:hover {
   color: #3b82f6;
 }
 
-/* ---------- Button ---------- */
 .login-btn {
-  width: 100%;
   background-color: #3b82f6;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
+  color: white;
   padding: 12px;
-  font-weight: 600;
+  border: none;
+  border-radius: 8px;
   font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
-  transition: 0.3s;
-  margin-top: 10px;
+  transition: background 0.3s ease;
 }
 
 .login-btn:hover {
   background-color: #2563eb;
 }
 
-/* ---------- Forgot Password ---------- */
-.forgot-link {
-  text-align: center;
-  margin-top: 18px;
+.login-text {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 15px;
 }
 
-.forgot-link a {
+.login-text a {
   color: #3b82f6;
   text-decoration: none;
-  font-size: 14px;
   font-weight: 500;
 }
 
-.forgot-link a:hover {
+.login-text a:hover {
   text-decoration: underline;
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 480px) {
-  .login-card {
-    padding: 30px 25px;
-  }
-
-  .login-title {
-    font-size: 22px;
-  }
-
-  .input-group input {
-    font-size: 14px;
-    padding: 11px 40px 11px 13px;
-  }
-
-  .login-btn {
-    font-size: 15px;
-  }
 }
