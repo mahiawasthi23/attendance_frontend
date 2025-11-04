@@ -1,0 +1,148 @@
+/* 🌟 Container Styling */
+.leave-form-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+  color: #222;
+}
+
+/* 🌟 Header */
+.leave-form-container h2 {
+  text-align: center;
+  color: #1d3557;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+/* 🌟 Form */
+.leave-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* 🌟 Labels */
+.leave-form label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* 🌟 Input Fields */
+.leave-form input,
+.leave-form select,
+.leave-form textarea {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  font-size: 0.95rem;
+  background-color: #fff;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Focus effect */
+.leave-form input:focus,
+.leave-form select:focus,
+.leave-form textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+/* 🌟 Textarea */
+.leave-form textarea {
+  resize: none;
+  min-height: 90px;
+}
+
+/* 🌟 Submit Button */
+.leave-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.leave-form button:hover {
+  background-color: #0056b3;
+}
+
+.leave-form button:active {
+  transform: scale(0.98);
+}
+
+/* 🌟 Message */
+.response-message {
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  color: #006400;
+}
+
+/* 🌟 Disabled Button */
+.leave-form button[disabled] {
+  background-color: #9ec8ff;
+  cursor: not-allowed;
+}
+
+/* 🌟 Mobile Responsive */
+@media (max-width: 600px) {
+  .leave-form-container {
+    max-width: 90%;
+    padding: 1rem;
+  }
+
+  .leave-form-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .leave-form input,
+  .leave-form select,
+  .leave-form textarea {
+    font-size: 0.9rem;
+    padding: 0.65rem;
+  }
+
+  .leave-form button {
+    font-size: 0.95rem;
+    padding: 0.75rem;
+  }
+}
+
+/* 🌟 Tablet Responsive */
+@media (min-width: 601px) and (max-width: 900px) {
+  .leave-form-container {
+    max-width: 600px;
+    padding: 1.2rem;
+  }
+
+  .leave-form-container h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* 🌟 Desktop Enhancements */
+@media (min-width: 901px) {
+  .leave-form-container {
+    transition: all 0.3s ease;
+  }
+
+  .leave-form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+}

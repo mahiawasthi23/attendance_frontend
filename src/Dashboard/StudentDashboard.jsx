@@ -1,144 +1,51 @@
-// import React, { useEffect, useState } from "react";
-// import StudentDashboardSidebar from "../Pages/StudentDashboardSidebar";
-// import "./StudentDashboard.css";
-
-// const StudentDashboard = () => {
-//   const [status, setStatus] = useState("Loading...");
-//   const [label, setLabel] = useState("Loading...");
-
-
-//   const fetchAttendanceStatus = async () => {
-//     return new Promise((resolve) => {
-//       setTimeout(() => {
-//         const now = new Date();
-//         const hour = now.getHours();
-//         const minute = now.getMinutes();
-
-//         let todayStatus = "";
-//         let statusLabel = "";
-
-       
-//         if (hour < 9) {
-//           statusLabel = "Yesterday Status";
-//           todayStatus = "Present"; 
-//         } 
-       
-//         else if (hour === 9 && minute <= 20) {
-//           statusLabel = "Today Status";
-//           const random = Math.floor(Math.random() * 3);
-//           if (random === 0) todayStatus = "Present";
-//           else if (random === 1) todayStatus = "Kitchen Turn";
-//           else todayStatus = "Leave";
-//         } 
-      
-//         else {
-//           statusLabel = "Today Status";
-//           todayStatus = "Absent";
-//         }
-
-//         resolve({ label: statusLabel, today: todayStatus });
-//       }, 800);
-//     });
-//   };
-
-
-//   useEffect(() => {
-//     const getData = async () => {
-//       const res = await fetchAttendanceStatus();
-//       setStatus(res.today);
-//       setLabel(res.label);
-//     };
-//     getData();
-
-//     const interval = setInterval(getData, 60000); 
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   return (
-//     <div className="student-dashboard">
-//       <StudentDashboardSidebar />
-
-//       <div className="dashboard-content">
-//         <h2>Student Dashboard</h2>
-
-//         <div className="status-card glass-effect">
-//           <h3>{label}</h3>
-//           <p className={`status ${status.toLowerCase().replace(" ", "-")}`}>
-//             {status}
-//           </p>
-//         </div>
-
-//         <div className="note">
-//           <small>
-//             ⏱️ Status auto-changes based on real time (9:00 AM – 9:20 AM logic applied)
-//           </small>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default StudentDashboard;
-
-
-
 import React, { useEffect, useState } from "react";
 import StudentDashboardSidebar from "../Pages/StudentDashboardSidebar";
 import "./StudentDashboard.css";
 
 const StudentDashboard = () => {
   const [status, setStatus] = useState("Loading...");
-  const [label, setLabel] = useState("Loading...");
+  const [label, setLabel] = useState("Today Status");
+  const [loading, setLoading] = useState(true);
 
-  // 🔹 Function to get today's date in yyyy-mm-dd format
-  const getTodayDate = () => {
-    const today = new Date();
-    return today.toISOString().split("T")[0];
-  };
+  const BASE_URL = "https://attendance-backend-3fjj.onrender.com/api/attendance";
 
   const fetchAttendanceStatus = async () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const now = new Date();
-        const hour = now.getHours();
-        const minute = now.getMinutes();
+    try {
+      const token = localStorage.getItem("token"); 
+      if (!token) {
+        setStatus("Not Logged In");
+        setLoading(false);
+        return;
+      }
 
-        let todayStatus = "";
-        let statusLabel = "";
+      const res = await fetch(`${BASE_URL}/today`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, 
+        },
+      });
 
-        // 🔹 Check if there's a Kitchen Turn form entry for today
-        const savedData = JSON.parse(localStorage.getItem("kitchenTurnData")) || [];
-        const todayData = savedData.find((entry) => entry.date === getTodayDate());
+      const data = await res.json();
 
-        if (todayData) {
-          todayStatus = "Kitchen Turn";
-          statusLabel = "Today Status";
-        } else if (hour < 9) {
-          statusLabel = "Yesterday Status";
-          todayStatus = "Present";
-        } else if (hour === 9 && minute <= 20) {
-          statusLabel = "Today Status";
-          todayStatus = "Present";
-        } else {
-          statusLabel = "Today Status";
-          todayStatus = "Absent";
-        }
-
-        resolve({ label: statusLabel, today: todayStatus });
-      }, 800);
-    });
+      if (!res.ok) {
+        setStatus(data.message || "Error fetching status");
+      } else {
+        setStatus(data.status || "No Status Yet");
+      }
+    } catch (error) {
+      console.error("Error fetching attendance:", error);
+      setStatus("Server Error");
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
-    const getData = async () => {
-      const res = await fetchAttendanceStatus();
-      setStatus(res.today);
-      setLabel(res.label);
-    };
-    getData();
+    fetchAttendanceStatus();
 
-    // Auto-refresh every 1 minute
-    const interval = setInterval(getData, 60000);
+  
+    const interval = setInterval(fetchAttendanceStatus, 60000);
     return () => clearInterval(interval);
   }, []);
 
@@ -146,19 +53,19 @@ const StudentDashboard = () => {
     <div className="student-dashboard">
       <StudentDashboardSidebar />
 
-      <div className="dashboard-content">
+      <div className="student-dashboard-content">
         <h2>Student Dashboard</h2>
 
-        <div className="status-card glass-effect">
+        <div className="student-status-card student-glass-effect">
           <h3>{label}</h3>
-          <p className={`status ${status.toLowerCase().replace(" ", "-")}`}>
-            {status}
+          <p className={`status ${status.toLowerCase().replace(/\s+/g, "-")}`}>
+            {loading ? "Loading..." : status}
           </p>
         </div>
 
-        <div className="note">
+        <div className="student-note">
           <small>
-            ⏱️ Status auto-updates based on real time (9:00 AM – 9:20 AM logic) or Kitchen Turn Form submission.
+            ⏱️ Status auto-updates based on Kitchen Turn, Leave, or QR Scan.
           </small>
         </div>
       </div>

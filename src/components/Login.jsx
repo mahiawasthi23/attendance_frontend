@@ -40,7 +40,12 @@ function Login({ onLogin }) {
       }
 
       localStorage.setItem("loggedInUser", JSON.stringify(data));
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+      }
+
       if (onLogin) onLogin(data);
+
 
       if (data.role === "Admin") navigate("/admin-dashboard");
       else navigate("/student-dashboard");

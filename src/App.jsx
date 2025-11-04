@@ -16,8 +16,7 @@ import LeaveRequests from "./AdminPages/LeaveRequests";
 import CorrectionRequests from "./AdminPages/CorrectionRequests";
 import LifecycleTracking from "./AdminPages/LifecycleTracking";
 import Reports from "./AdminPages/Reports";
-
-
+import LeaveForm from "./Pages/LeaveForm";
 
 
 
@@ -26,6 +25,7 @@ function App() {
   const [userRole, setUserRole] = useState(null);
 
 
+  
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("loggedInUser"));
     if (user) {
@@ -62,13 +62,10 @@ function App() {
            <Route path="/admin/correction-requests" element={<CorrectionRequests />} />
             <Route path="/admin/lifecycle-tracking" element={<LifecycleTracking />} />
             <Route path="/admin/reports-endflow" element={<Reports />} />
-
-
-            
-
           <Route path="/qr-scanner" element={<QRScannerInitial />} />
           <Route path="/qr-scan" element={<QRScanPage />} />
           <Route path="/kitchen-turn" element={<KitchenTurnForm />} />
+          <Route path="/leave-form" element={<LeaveForm />} />
         </Routes>
       </div>
     </Router>
