@@ -1,70 +1,75 @@
-/* ---------- Main Container ---------- */
 .signup-container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f9f9fb;
+  background: #f3f5f9;
   font-family: "Poppins", sans-serif;
   padding: 20px;
+  box-sizing: border-box;
 }
 
-/* ---------- Form Card ---------- */
 .signup-form {
-  background: #fff;
-  padding: 40px 35px;
+  background: #ffffff;
+  padding: 45px 35px;
   border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 380px;
+  max-width: 420px;
   text-align: center;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.signup-form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
 }
 
 .signup-form h2 {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
-  color: #1f1f1f;
-  margin-bottom: 30px;
+  color: #222;
+  margin-bottom: 25px;
 }
 
-/* ---------- Input Groups ---------- */
 .input-group {
   position: relative;
   margin-bottom: 18px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .input-group input,
 .input-group select {
   width: 100%;
-  padding: 14px 45px;
-  border: 1.5px solid #dcdcdc;
-  border-radius: 12px;
-  font-size: 15px;
-  outline: none;
+  box-sizing: border-box;
+  padding: 12px 42px;
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
   background-color: #fafafa;
-  color: #2c2c2c;
-  transition: 0.3s ease;
+  font-size: 15px;
+  color: #333;
+  outline: none;
+  transition: 0.3s;
 }
 
 .input-group input:focus,
 .input-group select:focus {
   border-color: #4b7bec;
   background: #fff;
-  box-shadow: 0 0 0 3px rgba(75, 123, 236, 0.12);
+  box-shadow: 0 0 0 3px rgba(75, 123, 236, 0.1);
 }
 
-/* ---------- Icons in Input ---------- */
 .input-icon {
   position: absolute;
   top: 50%;
   left: 14px;
   transform: translateY(-50%);
-  color: #a0a0a0;
+  color: #8c8c8c;
   font-size: 16px;
-  pointer-events: none;
 }
 
-/* ---------- Password Eye Icon ---------- */
 .password-group .toggle-password {
   position: absolute;
   top: 50%;
@@ -72,7 +77,7 @@
   transform: translateY(-50%);
   cursor: pointer;
   font-size: 18px;
-  color: #6c6c6c;
+  color: #666;
   transition: 0.3s;
 }
 
@@ -80,36 +85,35 @@
   color: #4b7bec;
 }
 
-/* ---------- Role Dropdown ---------- */
 .input-group select {
   appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: #fafafa url("data:image/svg+xml;utf8,<svg fill='gray' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 14px center;
+  background: #fafafa
+    url("data:image/svg+xml;utf8,<svg fill='gray' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>")
+    no-repeat right 14px center;
   background-size: 16px;
   cursor: pointer;
 }
 
-/* ---------- Button ---------- */
 .signup-btn {
   width: 100%;
-  background-color: #4b7bec;
+  background: #4b7bec;
   color: #fff;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 14px;
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
   margin-top: 10px;
+  box-sizing: border-box;
 }
 
 .signup-btn:hover {
-  background-color: #3867d6;
+  background: #3867d6;
+  box-shadow: 0 4px 15px rgba(75, 123, 236, 0.25);
 }
 
-/* ---------- Bottom Text ---------- */
 .login-text {
   margin-top: 18px;
   font-size: 14px;
@@ -120,21 +124,25 @@
   color: #4b7bec;
   text-decoration: none;
   font-weight: 500;
+  transition: 0.3s;
 }
 
 .login-text a:hover {
   text-decoration: underline;
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 480px) {
   .signup-form {
     padding: 30px 25px;
   }
 
+  .signup-form h2 {
+    font-size: 22px;
+  }
+
   .input-group input,
   .input-group select {
-    padding: 12px 40px;
+    padding: 11px 38px;
     font-size: 14px;
   }
 

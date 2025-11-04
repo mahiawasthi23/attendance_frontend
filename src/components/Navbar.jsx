@@ -27,7 +27,6 @@ const Navbar = ({ isLoggedIn, userRole, onLogout }) => {
           </Link>
         </div>
 
-   
         <button
           className={`hamburger ${menuOpen ? "active" : ""}`}
           onClick={toggleMenu}
@@ -38,21 +37,15 @@ const Navbar = ({ isLoggedIn, userRole, onLogout }) => {
           <span />
         </button>
 
-
         <div className={`navbar-right ${menuOpen ? "open" : ""}`}>
           <Link to="/" className="nav-link" onClick={handleLinkClick}>
             Home
           </Link>
 
           {!isLoggedIn && (
-            <>
-              <Link to="/login" className="nav-link" onClick={handleLinkClick}>
-                Login
-              </Link>
-              <Link to="/signup" className="nav-link" onClick={handleLinkClick}>
-                Signup
-              </Link>
-            </>
+            <Link to="/login" className="nav-link" onClick={handleLinkClick}>
+              Login
+            </Link>
           )}
 
           {isLoggedIn && (

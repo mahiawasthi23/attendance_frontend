@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import "./SignUp.css";
 
@@ -8,14 +8,14 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [role, setRole] = useState("student");
+  const [role, setRole] = useState("Student"); // ✅ Capitalized by default
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
     if (!name || !email || !password) {
-      alert("Please fill all fields");
+      alert("Please fill all fields.");
       return;
     }
 
@@ -25,27 +25,31 @@ function SignUp() {
     }
 
     try {
-      const response = await fetch(
+      const res = await fetch(
         "https://attendance-backend-3fjj.onrender.com/api/auth/signup",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name, email, password, role }),
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+            role: role.charAt(0).toUpperCase() + role.slice(1), 
+          }),
         }
       );
 
-      const data = await response.json();
+      const data = await res.json();
 
-      if (response.ok) {
+      if (res.ok) {
         alert("Registration successful!");
         navigate("/login");
       } else {
-        alert(data.message || "Something went wrong");
+        console.error("Signup error:", data);
+        alert(data.message || "Signup failed. Please check your details.");
       }
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error("Network or server error:", err);
       alert("Server error. Please try again later.");
     }
   };
@@ -55,7 +59,6 @@ function SignUp() {
       <form className="signup-form" onSubmit={handleRegister}>
         <h2>Create Your Account</h2>
 
-        {/* Full Name */}
         <div className="input-group">
           <FaUser className="input-icon" />
           <input
@@ -63,21 +66,21 @@ function SignUp() {
             placeholder="Enter your full name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           />
         </div>
 
-        {/* Email */}
         <div className="input-group">
           <FaEnvelope className="input-icon" />
           <input
             type="email"
-            placeholder="Enter your email or ID"
+            placeholder="Enter your NavGurukul email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
 
-        {/* Password */}
         <div className="input-group password-group">
           <FaLock className="input-icon" />
           <input
@@ -85,6 +88,7 @@ function SignUp() {
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <span
             className="toggle-password"
@@ -94,21 +98,19 @@ function SignUp() {
           </span>
         </div>
 
-        {/* Role */}
         <div className="input-group">
           <select value={role} onChange={(e) => setRole(e.target.value)}>
-            <option value="student">Student</option>
-            <option value="admin">Admin</option>
+            <option value="Student">Student</option>
+            <option value="Admin">Admin</option>
           </select>
         </div>
 
-        {/* Button */}
         <button type="submit" className="signup-btn">
           Sign Up
         </button>
 
         <p className="login-text">
-          Already have an account? <a href="/login">Login</a>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
       </form>
     </div>

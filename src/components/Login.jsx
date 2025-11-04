@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Login.css";
 
@@ -13,12 +13,12 @@ function Login({ onLogin }) {
     e.preventDefault();
 
     if (!email.endsWith("@navgurukul.org")) {
-      alert("Only @navgurukul.org emails are allowed to login!");
+      alert("Only @navgurukul.org emails are allowed!");
       return;
     }
 
     try {
-      const response = await fetch(
+      const res = await fetch(
         "https://attendance-backend-3fjj.onrender.com/api/auth/login",
         {
           method: "POST",
@@ -27,8 +27,14 @@ function Login({ onLogin }) {
         }
       );
 
-      const data = await response.json();
-      if (!response.ok) {
+      const data = await res.json();
+
+      if (!res.ok) {
+        if (data.message && data.message.toLowerCase().includes("not found")) {
+          alert("User not found! Redirecting to SignUp...");
+          navigate("/signup");
+          return;
+        }
         alert(data.message || "Invalid credentials!");
         return;
       }
@@ -36,14 +42,11 @@ function Login({ onLogin }) {
       localStorage.setItem("loggedInUser", JSON.stringify(data));
       if (onLogin) onLogin(data);
 
-      alert("Login successful!");
-
-      if (data.role === "admin") navigate("/admin-dashboard");
-      else if (data.role === "student") navigate("/student-dashboard");
-      else alert("Unknown role. Contact admin.");
-    } catch (error) {
-      console.error("Login error:", error);
-      alert("Something went wrong. Please try again later.");
+      if (data.role === "Admin") navigate("/admin-dashboard");
+      else navigate("/student-dashboard");
+    } catch (err) {
+      console.error("Login error:", err);
+      alert("Server error. Please try again later.");
     }
   };
 
@@ -51,19 +54,17 @@ function Login({ onLogin }) {
     <div className="login-container">
       <div className="login-card">
         <h2 className="login-title">Welcome Back</h2>
-        <p className="login-subtitle">Login to your account to continue</p>
+        <p className="login-subtitle">Login to your account</p>
 
         <form onSubmit={handleLogin} className="login-form">
-          <label className="login-label">Email / Student ID</label>
-          <div className="input-group">
-            <input
-              type="email"
-              placeholder="Enter your email or ID"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
+          <label className="login-label">Email</label>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
           <label className="login-label">Password</label>
           <div className="input-group password-group">
@@ -86,9 +87,9 @@ function Login({ onLogin }) {
             Login
           </button>
 
-          <div className="forgot-link">
-            <a href="#">Forgot Password?</a>
-          </div>
+          <p className="login-text">
+            Don’t have an account? <Link to="/signup">Sign Up</Link>
+          </p>
         </form>
       </div>
     </div>
@@ -96,3 +97,4 @@ function Login({ onLogin }) {
 }
 
 export default Login;
+
