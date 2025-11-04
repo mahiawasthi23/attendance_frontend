@@ -1,0 +1,59 @@
+.qr-generator {
+  padding: 30px;
+  text-align: center;
+  background: #f8fbff;
+  height: 100vh;
+}
+
+.qr-card {
+  width: 320px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.qr-image {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.status.active {
+  color: green;
+  font-weight: 600;
+  background: #e8f7ec;
+  border-radius: 20px;
+  display: inline-block;
+  padding: 5px 15px;
+  margin-bottom: 15px;
+}
+
+.timer {
+  font-size: 16px;
+}
+
+.countdown {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.generate-btn {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.generate-btn:hover {
+  background: #145ca3;
+}
+
+.glass-effect {
+  backdrop-filter: blur(8px);
+}
