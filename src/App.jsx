@@ -7,6 +7,8 @@ import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import StudentDashboard from "./Dashboard/StudentDashboard";
 import AdminDashboard from "./Dashboard/AdminDashboard";
+import QRScannerInitial from "./Pages/QRScannerInitial";
+import QRScanPage from "./Pages/QRScanPage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -43,6 +45,8 @@ function App() {
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/student-dashboard" element={<StudentDashboard />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/qr-scanner" element={<QRScannerInitial />} />
+          <Route path="/qr-scan-page" element={<QRScanPage />} />
         </Routes>
       </div>
     </Router>

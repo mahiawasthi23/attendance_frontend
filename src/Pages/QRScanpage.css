@@ -1,0 +1,141 @@
+.Page-qrscanner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle at top, #0a192f, #020c1b);
+  font-family: "Poppins", sans-serif;
+  color: #fff;      
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 255, 100, 0.3);
+}
+
+.Page-qrscanner-card {
+  width: 380px;
+  height: 80vh;
+  padding: 2px 20px;
+  margin-top: 5%;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.Page-qrscanner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Page-back-btn {
+  background: none;
+  border: none;
+  color: #00ff88;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.Page-back-btn:hover {
+  transform: scale(1.1);
+  color: #00ffaa;
+}
+
+.Page-qrscanner-header h3 {
+  flex: 1;
+  text-align: center;
+  color: #00ffaa;
+  font-weight: 600;
+}
+
+.Page-qrscanner-info h4 {
+  margin: 0px;
+  font-weight: 500;
+}
+
+.Page-timer-label {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.Page-countdown {
+  display: inline-block;
+  background: rgba(0, 255, 136, 0.15);
+  border: 1px solid rgba(0, 255, 136, 0.4);
+  padding: 5px 16px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #00ffaa;
+}
+
+.Page-scanner-box {
+  margin-top: 5px;
+}
+
+.Page-scanner-frame {
+  width: 260px;
+  height: 50%;
+  margin: 0 auto;
+  border: 3px solid #00ffaa;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.Page-scanner-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Page-scanner-hint {
+  margin-top: 5px;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.Page-scanner-result {
+  margin-top: 2px;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #00ff99;
+}
+
+.Page-cant-scan {
+  display: inline-block;
+  margin-top: 0px;
+  color: #00ffaa;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.Page-cant-scan:hover {
+  text-decoration: underline;
+  color: #80ffd3;
+}
+
+
+.Page-scanner-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #00ffaa, transparent);
+  animation: scanLine 2s linear infinite;
+}
+
+@keyframes scanLine {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
