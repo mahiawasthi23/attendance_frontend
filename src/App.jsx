@@ -18,6 +18,8 @@ import LifecycleTracking from "./AdminPages/LifecycleTracking";
 import Reports from "./AdminPages/Reports";
 import LeaveForm from "./Pages/LeaveForm";
 import MyLeaves from "./Pages/MyLeaves";
+import CorrectionForm from "./Pages/CorrectionForm";
+import MyCorrections from "./Pages/MyCorrections";
 
 
 
@@ -68,6 +70,8 @@ function App() {
           <Route path="/kitchen-turn" element={<KitchenTurnForm />} />
           <Route path="/leave-form" element={<LeaveForm />} />
           <Route path="/my-leaves" element={<MyLeaves />} />
+          <Route path="/correction-request" element={<CorrectionForm />} />
+          <Route path="/my-corrections" element={<MyCorrections />} />
         </Routes>
       </div>
     </Router>
