@@ -23,7 +23,7 @@ const Navbar = ({ isLoggedIn, userRole, onLogout }) => {
       <div className="navbar-container">
         <div className="navbar-left">
           <Link to="/" className="navbar_logo" onClick={handleLinkClick}>
-            AJMF + Navgurukul
+             <img src="navgurukul_logo.png" alt="Navgurukul Logo" className="nav-navgurukul-logo" />
           </Link>
         </div>
 
