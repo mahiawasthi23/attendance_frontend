@@ -1,0 +1,189 @@
+.my-corrections {
+  max-width: 900px;
+  width: 90%;
+  margin: 50px auto;
+  padding: 25px 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.my-corrections h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+
+.my-corrections p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.my-corrections .error {
+  text-align: center;
+  color: #b71c1c;
+  background: #fdecea;
+  border: 1px solid #f5b5b5;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+
+.my-corrections .card {
+  background: #f9fafb;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.my-corrections .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+.my-corrections .card p {
+  font-size: 1rem;
+  color: #333;
+  margin: 6px 0;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.my-corrections .card strong {
+  color: #000;
+  font-weight: 600;
+}
+
+
+.status {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status.pending {
+  color: #f59e0b;
+}
+
+.status.approved {
+  color: #16a34a; 
+}
+
+.status.rejected {
+  color: #dc2626; 
+}
+
+
+.my-corrections > p {
+  text-align: center;
+  color: #555;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+
+
+@media (min-width: 1200px) {
+  .my-corrections {
+    max-width: 1000px;
+    padding: 35px 40px;
+  }
+
+  .my-corrections h2 {
+    font-size: 2.2rem;
+  }
+
+  .my-corrections .card {
+    padding: 22px;
+  }
+}
+
+
+@media (max-width: 1199px) {
+  .my-corrections {
+    width: 85%;
+  }
+
+  .my-corrections h2 {
+    font-size: 1.9rem;
+  }
+}
+
+
+@media (max-width: 991px) {
+  .my-corrections {
+    width: 90%;
+    padding: 20px;
+    margin: 40px auto;
+  }
+
+  .my-corrections h2 {
+    font-size: 1.6rem;
+  }
+
+  .my-corrections .card {
+    padding: 16px;
+  }
+
+  .my-corrections .card p {
+    font-size: 0.95rem;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .my-corrections {
+    width: 94%;
+    padding: 18px;
+    margin: 30px auto;
+  }
+
+  .my-corrections h2 {
+    font-size: 1.4rem;
+  }
+
+  .my-corrections .card {
+    padding: 14px;
+  }
+
+  .my-corrections .card p {
+    font-size: 0.9rem;
+  }
+}
+
+
+@media (max-width: 400px) {
+  .my-corrections {
+    width: 96%;
+    padding: 15px;
+  }
+
+  .my-corrections h2 {
+    font-size: 1.2rem;
+  }
+
+  .my-corrections .card {
+    padding: 12px;
+  }
+
+  .my-corrections .card p {
+    font-size: 0.85rem;
+  }
+
+  .my-corrections .error {
+    font-size: 0.85rem;
+  }
+}

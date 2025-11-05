@@ -1,0 +1,179 @@
+/* ========== Global Container ========== */
+.correction-form {
+  max-width: 500px;
+  width: 90%;
+  margin: 50px auto;
+  padding: 25px 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ========== Heading ========== */
+.correction-form h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #1a1a1a;
+  margin-bottom: 25px;
+}
+
+/* ========== Form ========== */
+.correction-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ========== Labels ========== */
+.correction-form label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* ========== Inputs ========== */
+.correction-form input[type="date"],
+.correction-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.correction-form input[type="date"]:focus,
+.correction-form textarea:focus {
+  border-color: #007bff;
+}
+
+/* ========== Textarea ========== */
+.correction-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* ========== Button ========== */
+.correction-form button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.correction-form button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.correction-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* ========== Message Styles ========== */
+.msg {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.msg.success {
+  background-color: #e9f9ee;
+  color: #1e7e34;
+  border: 1px solid #a8e4b0;
+}
+
+.msg.error {
+  background-color: #fdecea;
+  color: #b71c1c;
+  border: 1px solid #f5b5b5;
+}
+
+/* ========== Responsive Design ========== */
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .correction-form {
+    width: 90%;
+    padding: 20px;
+    margin: 40px auto;
+  }
+
+  .correction-form h2 {
+    font-size: 1.4rem;
+  }
+
+  .correction-form button {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  .correction-form {
+    width: 95%;
+    padding: 18px;
+    margin: 30px auto;
+  }
+
+  .correction-form h2 {
+    font-size: 1.2rem;
+  }
+
+  .correction-form label {
+    font-size: 0.9rem;
+  }
+
+  .correction-form input,
+  .correction-form textarea {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  .correction-form button {
+    font-size: 0.9rem;
+    padding: 9px 12px;
+  }
+}
+
+
+.view-my-corrections {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.view-btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.view-btn:hover {
+  background-color: #0056b3;
+}
+
+/* 📱 Responsive for all screens */
+@media (max-width: 600px) {
+  .view-btn {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+  }
+}
