@@ -1,45 +1,130 @@
 .admin-qr-generator {
+  min-height: 100vh; 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  justify-content: flex-start;
   text-align: center;
-  padding: 2rem;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  font-family: "Poppins", sans-serif;
+
+  padding-top: 140px;  
+  box-sizing: border-box;
+}
+
+.admin-qr-generator h2 {
+  font-size: 2rem;
+  color: #0d47a1;
+  margin-bottom: 25px;
+  font-weight: 600;
 }
 
 .admin-qr-card {
-  margin: 20px auto;
-  padding: 20px;
-  width: 320px;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
-  background: #ffffff10;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  padding: 25px;
+  width: 340px;
+  max-width: 90%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  text-align: center;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-qr-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .admin-qr-image {
-  width: 200px;
-  height: 200px;
-  margin: 10px 0;
+  width: 230px;
+  height: 230px;
+  margin: 15px 0;
+  border-radius: 10px;
+  background: #fff;
+  border: 3px solid #0d47a1;
+}
+
+.admin-qr-placeholder {
+  width: 230px;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #e3f2fd;
+  color: #555;
+  font-weight: 500;
+}
+
+.admin-status {
+  font-size: 1.1rem;
+  margin-top: 5px;
+  font-weight: 600;
 }
 
 .admin-status.active {
-  color: green;
-  font-weight: bold;
+  color: #2e7d32;
 }
 
 .admin-status.expired {
-  color: red;
+  color: #c62828;
+}
+
+.admin-timer {
+  margin-top: 15px;
+  color: #333;
+}
+
+.admin-countdown {
+  font-size: 1.8rem;
   font-weight: bold;
+  margin: 8px 0;
+}
+
+.admin-error {
+  color: #d32f2f;
+  margin-top: 10px;
+  font-weight: 500;
 }
 
 .admin-generate-btn {
-  padding: 10px 20px;
-  background: #007bff;
-  color: white;
+  padding: 12px 28px;
+  background: #0d47a1;
+  color: #fff;
+  font-size: 1rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.admin-generate-btn:hover {
+  background: #1565c0;
+  transform: translateY(-2px);
 }
 
 .admin-generate-btn:disabled {
   background: gray;
   cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 480px) {
+  .admin-qr-card {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .admin-qr-image {
+    width: 180px;
+    height: 180px;
+  }
+
+  .admin-countdown {
+    font-size: 1.5rem;
+  }
 }
