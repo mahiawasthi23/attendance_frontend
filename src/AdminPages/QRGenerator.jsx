@@ -6,9 +6,8 @@ const AdminQRGenerator = () => {
   const [validTill, setValidTill] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [timeLeft, setTimeLeft] = useState(1200);
+  const [timeLeft, setTimeLeft] = useState(1200); 
 
-  
   const generateNewQR = async () => {
     try {
       setLoading(true);
@@ -49,14 +48,12 @@ const AdminQRGenerator = () => {
     }
   };
 
- 
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
     return () => clearInterval(timer);
   }, []);
-
 
   useEffect(() => {
     generateNewQR();
