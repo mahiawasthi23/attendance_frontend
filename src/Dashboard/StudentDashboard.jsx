@@ -95,7 +95,7 @@ const StudentDashboard = () => {
 
         <div className="student-status-card student-glass-effect">
           <h3>{label}</h3>
-          <p className={`status ${status.toLowerCase().replace(/\s+/g, "-")}`}>
+          <p className={`student-status-card ${status.toLowerCase().replace(/\s+/g, "-")}`}>
             {loading ? "Loading..." : status}
           </p>
         </div>

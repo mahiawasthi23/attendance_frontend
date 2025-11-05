@@ -10,12 +10,13 @@ const MyCorrections = () => {
     const fetchMy = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch(
-          "https://attendance-backend-3fjj.onrender.com/api/corrections/my",
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
+      const res = await fetch(
+  "https://attendance-backend-3fjj.onrender.com/api/correction/my",
+  {
+    headers: { Authorization: `Bearer ${token}` },
+  }
+);
+
         const data = await res.json();
         if (!res.ok) throw new Error(data.message || "Failed");
         setItems(data.data || []);
