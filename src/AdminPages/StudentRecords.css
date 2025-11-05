@@ -61,7 +61,7 @@
   padding: 4px 10px;
   border-radius: 12px;
   font-weight: bold;
-  color: white;
+  /* color: white; */
 }
 
 .status.present {

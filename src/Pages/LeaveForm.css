@@ -146,3 +146,34 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   }
 }
+
+
+
+.view-my-leaves {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.leave-view-btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.leave-view-btn:hover {
+  background-color: #0056b3;
+}
+
+/* 📱 Responsive for all screens */
+@media (max-width: 600px) {
+  .leave-view-btn {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+  }
+}

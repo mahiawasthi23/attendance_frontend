@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
 import "./LeaveForm.css";
 
 const LeaveForm = () => {
@@ -120,6 +121,10 @@ const LeaveForm = () => {
         </button>
 
         {message && <p className="response-message">{message}</p>}
+
+        <div className="view-my-leaves">
+         <Link to="/my-leaves" className="leave-view-btn">View My Leaves</Link>
+        </div>
       </form>
     </div>
   );

@@ -6,7 +6,6 @@ import {
   MdOutlineEdit,
   MdOutlineHome,
   MdOutlineTrackChanges,
-   MdOutlineListAlt,
 } from "react-icons/md";
 import "./StudentDashboardSidebar.css";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -20,7 +19,6 @@ function StudentDashboardSidebar() {
     { icon: <FaQrcode />, label: "QR Scanner", path: "/qr-scanner" },
     { icon: <FaUtensils />, label: "Kitchen Turn", path: "/kitchen-turn" },
     { icon: <MdOutlineHome />, label: "Leave Form", path: "/leave-form" },
-     { icon: <MdOutlineListAlt />, label: "My Leaves", path: "/my-leaves" },
     { icon: <MdOutlineEdit />, label: "Correction Request", path: "/correction-request" },
     { icon: <MdOutlineTrackChanges />, label: "Student Tracking", path: "/student-tracking" },
     { icon: <FaHistory />, label: "View History", path: "/view-history" },
