@@ -6,9 +6,8 @@ const AdminQRGenerator = () => {
   const [validTill, setValidTill] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [timeLeft, setTimeLeft] = useState(1200); // 20 minutes timer
+  const [timeLeft, setTimeLeft] = useState(1200); 
 
-  // 🔹 Function to generate new QR
   const generateNewQR = async () => {
     try {
       setLoading(true);
@@ -37,7 +36,7 @@ const AdminQRGenerator = () => {
       if (res.ok && data.qrImage) {
         setQrImage(data.qrImage);
         setValidTill(data.validTill || "");
-        setTimeLeft(1200); // Reset timer to 20 minutes
+        setTimeLeft(1200); 
       } else {
         setError(data.message || "Failed to generate QR code.");
       }
@@ -49,7 +48,6 @@ const AdminQRGenerator = () => {
     }
   };
 
-  // 🔹 Countdown timer
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
@@ -57,7 +55,6 @@ const AdminQRGenerator = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // 🔹 Generate QR on first load
   useEffect(() => {
     generateNewQR();
   }, []);
