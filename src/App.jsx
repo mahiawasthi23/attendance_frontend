@@ -25,7 +25,7 @@ function App() {
   const [userRole, setUserRole] = useState(null);
 
 
-  
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("loggedInUser"));
     if (user) {
@@ -58,10 +58,10 @@ function App() {
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/admin/qr-generator" element={<QRGenerator />} />
           <Route path="/admin/student-records" element={<StudentRecords />} />
-           <Route path="/admin/leave-requests" element={<LeaveRequests />} />
-           <Route path="/admin/correction-requests" element={<CorrectionRequests />} />
-            <Route path="/admin/lifecycle-tracking" element={<LifecycleTracking />} />
-            <Route path="/admin/reports-endflow" element={<Reports />} />
+          <Route path="/admin/leave-requests" element={<LeaveRequests />} />
+          <Route path="/admin/correction-requests" element={<CorrectionRequests />} />
+          <Route path="/admin/lifecycle-tracking" element={<LifecycleTracking />} />
+          <Route path="/admin/reports-endflow" element={<Reports />} />
           <Route path="/qr-scanner" element={<QRScannerInitial />} />
           <Route path="/qr-scan" element={<QRScanPage />} />
           <Route path="/kitchen-turn" element={<KitchenTurnForm />} />
