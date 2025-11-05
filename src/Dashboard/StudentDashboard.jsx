@@ -7,34 +7,73 @@ const StudentDashboard = () => {
   const [label, setLabel] = useState("Today Status");
   const [loading, setLoading] = useState(true);
 
-  const BASE_URL = "https://attendance-backend-3fjj.onrender.com/api/attendance";
+  const ATTENDANCE_URL = "https://attendance-backend-3fjj.onrender.com/api/attendance/today";
+  const LEAVE_URL = "https://attendance-backend-3fjj.onrender.com/api/leave/my-leaves";
 
-  const fetchAttendanceStatus = async () => {
+  const fetchStatus = async () => {
     try {
-      const token = localStorage.getItem("token"); 
+      const token = localStorage.getItem("token");
       if (!token) {
         setStatus("Not Logged In");
         setLoading(false);
         return;
       }
 
-      const res = await fetch(`${BASE_URL}/today`, {
-        method: "GET",
+      // Current time
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+
+      // Label logic: 12am - 9am => Yesterday Status
+      if (hours >= 0 && hours < 9) {
+        setLabel("Yesterday Status");
+      } else {
+        setLabel("Today Status");
+      }
+
+      // Fetch attendance
+      const attendanceRes = await fetch(ATTENDANCE_URL, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, 
+          Authorization: `Bearer ${token}`,
         },
       });
+      const attendanceData = await attendanceRes.json();
 
-      const data = await res.json();
+      // Fetch leaves
+      const leaveRes = await fetch(LEAVE_URL, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const leaveData = await leaveRes.json();
 
-      if (!res.ok) {
-        setStatus(data.message || "Error fetching status");
+      // Check for approved leave today
+      const today = new Date().toISOString().split("T")[0];
+      const approvedLeaveToday = leaveData.data?.find(
+        (leave) =>
+          leave.status === "Approved" &&
+          today >= leave.startDate &&
+          today <= leave.endDate
+      );
+
+      if (approvedLeaveToday) {
+        // Example: Exam Leave, Health Leave, etc.
+        setStatus(approvedLeaveToday.typeOfLeave || "Leave");
+      } else if (attendanceData.status) {
+        // If attendance already marked (Present / Kitchen Turn)
+        setStatus(attendanceData.status);
       } else {
-        setStatus(data.status || "No Status Yet");
+        // If time > 9:20 AM and still no status
+        if (hours > 9 || (hours === 9 && minutes >= 20)) {
+          setStatus("Absent");
+        } else {
+          setStatus("No Status Yet");
+        }
       }
     } catch (error) {
-      console.error("Error fetching attendance:", error);
+      console.error("Error fetching status:", error);
       setStatus("Server Error");
     } finally {
       setLoading(false);
@@ -42,10 +81,8 @@ const StudentDashboard = () => {
   };
 
   useEffect(() => {
-    fetchAttendanceStatus();
-
-  
-    const interval = setInterval(fetchAttendanceStatus, 60000);
+    fetchStatus();
+    const interval = setInterval(fetchStatus, 60000); // refresh every 1 min
     return () => clearInterval(interval);
   }, []);
 
@@ -65,7 +102,8 @@ const StudentDashboard = () => {
 
         <div className="student-note">
           <small>
-            ⏱️ Status auto-updates based on Kitchen Turn, Leave, or QR Scan.
+            ⏱️ Status auto-updates every minute based on QR Scan, Kitchen Turn,
+            or Leave. After 9:20 AM, if no action — status becomes Absent.
           </small>
         </div>
       </div>

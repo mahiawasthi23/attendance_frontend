@@ -38,11 +38,12 @@ const LeaveForm = () => {
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         }
       );
 
-      setMessage(res.data.message);
+      setMessage(res.data.message || "Leave applied successfully!");
       setFormData({ startDate: "", endDate: "", reason: "", typeOfLeave: "" });
     } catch (err) {
       setMessage(err.response?.data?.message || "Error applying leave");
@@ -96,7 +97,9 @@ const LeaveForm = () => {
             <option value="Interview Leave">Interview Leave</option>
             <option value="Casual Leave">Casual Leave</option>
             <option value="Period Leave">Period Leave</option>
-            <option value="Special Occasion Leave">Special Occasion Leave</option>
+            <option value="Special Occasion Leave">
+              Special Occasion Leave
+            </option>
             <option value="Documentation Leave">Documentation Leave</option>
           </select>
         </div>
@@ -123,3 +126,4 @@ const LeaveForm = () => {
 };
 
 export default LeaveForm;
+

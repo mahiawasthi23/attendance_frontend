@@ -11,6 +11,7 @@ import QRScannerInitial from "./Pages/QRScannerInitial";
 import QRScanPage from "./Pages/QRScanPage";
 import KitchenTurnForm from "./Pages/KitchenTurnForm";
 import LeaveForm from "./Pages/LeaveForm";
+import MyLeaves from "./Pages/MyLeaves";
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           <Route path="/qr-scan" element={<QRScanPage />} />
           <Route path="/kitchen-turn" element={<KitchenTurnForm />} />
           <Route path="/leave-form" element={<LeaveForm />} />
+          <Route path="/my-leaves" element={<MyLeaves />} />
         </Routes>
       </div>
     </Router>
