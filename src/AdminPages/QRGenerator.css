@@ -1,59 +1,45 @@
 .admin-qr-generator {
-  padding: 30px;
   text-align: center;
-  background: #f8fbff;
-  height: 100vh;
+  padding: 2rem;
 }
 
 .admin-qr-card {
-  width: 320px;
-  margin: 30px auto;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
   padding: 20px;
+  width: 320px;
+  border-radius: 16px;
+  background: #ffffff10;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 .admin-qr-image {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 15px;
+  width: 200px;
+  height: 200px;
+  margin: 10px 0;
 }
 
 .admin-status.active {
   color: green;
-  font-weight: 600;
-  background: #e8f7ec;
-  border-radius: 20px;
-  display: inline-block;
-  padding: 5px 15px;
-  margin-bottom: 15px;
-}
-
-.admin-timer {
-  font-size: 16px;
-}
-
-.admin-countdown {
-  font-size: 24px;
   font-weight: bold;
-  margin: 10px 0;
+}
+
+.admin-status.expired {
+  color: red;
+  font-weight: bold;
 }
 
 .admin-generate-btn {
-  background: #1976d2;
+  padding: 10px 20px;
+  background: #007bff;
   color: white;
   border: none;
-  padding: 12px 20px;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 16px;
 }
 
-.admin-generate-btn:hover {
-  background: #145ca3;
-}
-
-.admin-glass-effect {
-  backdrop-filter: blur(8px);
+.admin-generate-btn:disabled {
+  background: gray;
+  cursor: not-allowed;
 }
