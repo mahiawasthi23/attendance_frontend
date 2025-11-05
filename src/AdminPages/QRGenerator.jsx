@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./QRGenerator.css";
 
-const QRGenerator = () => {
-  const [timeLeft, setTimeLeft] = useState(300); // 5 minutes (in seconds)
+const AdminQRGenerator = () => {
+  const [timeLeft, setTimeLeft] = useState(300);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -16,18 +16,18 @@ const QRGenerator = () => {
   const seconds = timeLeft % 60;
 
   return (
-    <div className="qr-generator">
+    <div className="admin-qr-generator">
       <h2>QR Code Generator</h2>
-      <div className="qr-card glass-effect">
+      <div className="admin-qr-card admin-glass-effect">
         <img
-          src="https://i.ibb.co/Z1n6pLw/qr-sample.png" // Replace with your QR image if needed
+          src="https://i.ibb.co/Z1n6pLw/qr-sample.png"
           alt="QR Code"
-          className="qr-image"
+          className="admin-qr-image"
         />
-        <p className="status active">Active</p>
-        <div className="timer">
+        <p className="admin-status active">Active</p>
+        <div className="admin-timer">
           <p>Expires in:</p>
-          <div className="countdown">
+          <div className="admin-countdown">
             <span>{String(minutes).padStart(2, "0")}</span> :
             <span>{String(seconds).padStart(2, "0")}</span>
           </div>
@@ -35,9 +35,9 @@ const QRGenerator = () => {
         </div>
       </div>
 
-      <button className="generate-btn">Generate New QR</button>
+      <button className="admin-generate-btn">Generate New QR</button>
     </div>
   );
 };
 
-export default QRGenerator;
+export default AdminQRGenerator;

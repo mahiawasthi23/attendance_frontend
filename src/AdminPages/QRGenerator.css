@@ -1,11 +1,11 @@
-.qr-generator {
+.admin-qr-generator {
   padding: 30px;
   text-align: center;
   background: #f8fbff;
   height: 100vh;
 }
 
-.qr-card {
+.admin-qr-card {
   width: 320px;
   margin: 30px auto;
   background: white;
@@ -14,13 +14,13 @@
   padding: 20px;
 }
 
-.qr-image {
+.admin-qr-image {
   width: 100%;
   border-radius: 12px;
   margin-bottom: 15px;
 }
 
-.status.active {
+.admin-status.active {
   color: green;
   font-weight: 600;
   background: #e8f7ec;
@@ -30,17 +30,17 @@
   margin-bottom: 15px;
 }
 
-.timer {
+.admin-timer {
   font-size: 16px;
 }
 
-.countdown {
+.admin-countdown {
   font-size: 24px;
   font-weight: bold;
   margin: 10px 0;
 }
 
-.generate-btn {
+.admin-generate-btn {
   background: #1976d2;
   color: white;
   border: none;
@@ -50,10 +50,10 @@
   cursor: pointer;
 }
 
-.generate-btn:hover {
+.admin-generate-btn:hover {
   background: #145ca3;
 }
 
-.glass-effect {
+.admin-glass-effect {
   backdrop-filter: blur(8px);
 }

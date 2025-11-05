@@ -1,6 +1,6 @@
 import React from "react";
 import AdminDashboardSidebar from "../AdminPages/AdminDashboardSidebar";
-// import "./AdminDashboard.css";
+import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
