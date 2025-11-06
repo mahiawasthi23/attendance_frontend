@@ -1,4 +1,4 @@
-.admin-qr-generator {
+/* .admin-qr-generator {
   min-height: 100vh; 
   width: 100%;
   display: flex;
@@ -127,4 +127,68 @@
   .admin-countdown {
     font-size: 1.5rem;
   }
+} */
+
+
+.admin-qr-generator {
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 60px;
+}
+
+.admin-qr-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  text-align: center;
+}
+
+.admin-qr-image {
+  width: 220px;
+  height: 220px;
+  margin-bottom: 10px;
+}
+
+.admin-status {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.admin-status.active {
+  color: green;
+}
+
+.admin-status.expired {
+  color: red;
+}
+
+.admin-timer {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.admin-countdown {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.admin-generate-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  margin-top: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.admin-generate-btn:hover {
+  background: #0056b3;
+}
+
+.admin-error {
+  color: red;
+  margin-top: 10px;
 }
