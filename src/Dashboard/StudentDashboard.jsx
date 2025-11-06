@@ -7,7 +7,7 @@ const StudentDashboard = () => {
   const [label, setLabel] = useState("Today Status");
   const [loading, setLoading] = useState(true);
 
- 
+
   const ATTENDANCE_URL = "https://attendance-backend-3fjj.onrender.com/api/attendance/today";
   const LEAVE_URL = "https://attendance-backend-3fjj.onrender.com/api/leave/my-leaves";
 
@@ -24,13 +24,13 @@ const StudentDashboard = () => {
       const hours = now.getHours();
       const minutes = now.getMinutes();
 
+     
       if (hours >= 0 && hours < 9) {
         setLabel("Yesterday Status");
       } else {
         setLabel("Today Status");
       }
 
-      
       const attendanceRes = await fetch(ATTENDANCE_URL, {
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const StudentDashboard = () => {
       });
       const attendanceData = await attendanceRes.json();
 
-    
+   
       const leaveRes = await fetch(LEAVE_URL, {
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const StudentDashboard = () => {
 
       const today = new Date().toISOString().split("T")[0];
 
-   
+      
       const approvedLeaveToday = leaveData.data?.find(
         (leave) =>
           leave.status === "Approved" &&
@@ -62,7 +62,7 @@ const StudentDashboard = () => {
         setStatus(approvedLeaveToday.typeOfLeave || "Leave");
       } 
       else if (attendanceData.status) {
-       
+      
         if (
           attendanceData.source === "Correction" &&
           attendanceData.status === "Present"
@@ -73,7 +73,7 @@ const StudentDashboard = () => {
         }
       } 
       else {
-       
+   
         if (hours > 9 || (hours === 9 && minutes >= 20)) {
           setStatus("Absent");
         } else {
@@ -90,7 +90,7 @@ const StudentDashboard = () => {
 
   useEffect(() => {
     fetchStatus();
-    const interval = setInterval(fetchStatus, 60000); 
+    const interval = setInterval(fetchStatus, 60000); // refresh every 1 min
     return () => clearInterval(interval);
   }, []);
 
