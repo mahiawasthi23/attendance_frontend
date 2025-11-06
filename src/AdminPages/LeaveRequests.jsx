@@ -79,8 +79,8 @@ const AdminLeaveRequests = () => {
               .filter((leave) => leave.status === "Pending")
               .map((leave, index) => (
                 <div key={index} className="admin-leave-card">
-                  <p><strong>Name:</strong> {leave.studentName}</p>
-                  <p><strong>Email:</strong> {leave.studentEmail}</p>
+                  <p><strong>Name:</strong> {leave.name}</p>
+                  {/* <p><strong>Email:</strong> {leave.studentEmail}</p> */}
                   <p><strong>Type of Leave:</strong> {leave.typeOfLeave}</p>
                   <p><strong>Reason:</strong> {leave.reason}</p>
                   <p><strong>Date:</strong> {leave.startDate} → {leave.endDate}</p>
@@ -109,8 +109,8 @@ const AdminLeaveRequests = () => {
               .filter((leave) => leave.status === "Approved")
               .map((leave, index) => (
                 <div key={index} className="admin-leave-card approved">
-                  <p><strong>Name:</strong> {leave.studentName}</p>
-                  <p><strong>Email:</strong> {leave.studentEmail}</p>
+                  <p><strong>Name:</strong> {leave.name}</p>
+                  {/* <p><strong>Email:</strong> {leave.studentEmail}</p> */}
                   <p><strong>Type of Leave:</strong> {leave.typeOfLeave}</p>
                   <p><strong>Reason:</strong> {leave.reason}</p>
                   <p><strong>Date:</strong> {leave.startDate} → {leave.endDate}</p>
@@ -126,8 +126,8 @@ const AdminLeaveRequests = () => {
               .filter((leave) => leave.status === "Rejected")
               .map((leave, index) => (
                 <div key={index} className="admin-leave-card rejected">
-                  <p><strong>Name:</strong> {leave.studentName}</p>
-                  <p><strong>Email:</strong> {leave.studentEmail}</p>
+                  <p><strong>Name:</strong> {leave.name}</p>
+                  {/* <p><strong>Email:</strong> {leave.studentEmail}</p> */}
                   <p><strong>Type of Leave:</strong> {leave.typeOfLeave}</p>
                   <p><strong>Reason:</strong> {leave.reason}</p>
                   <p><strong>Date:</strong> {leave.startDate} → {leave.endDate}</p>
