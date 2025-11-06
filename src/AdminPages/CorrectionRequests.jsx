@@ -1,35 +1,80 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CorrectionRequests.css";
 
 const CorrectionRequests = () => {
-  const [requests, setRequests] = useState([
-    {
-      id: 1,
-      name: "Raj Sharma",
-      date: "2024-08-15",
-      reason:
-        "Had a doctor’s appointment in the morning and arrived late. Attached is the doctor's note as proof.",
-      image: "https://i.ibb.co/Vw1ytPJ/user1.png",
-      status: "Pending",
-    },
-    {
-      id: 2,
-      name: "Priya Singh",
-      date: "2024-08-14",
-      reason:
-        "Technical issue with the biometric scanner. It failed to record my entry. The security guard can vouch for my presence.",
-      image: "https://i.ibb.co/Vw1ytPJ/user1.png",
-      status: "Pending",
-    },
-  ]);
+  const [requests, setRequests] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleAction = (id, action) => {
-    setRequests((prev) =>
-      prev.map((req) =>
-        req.id === id ? { ...req, status: action } : req
-      )
-    );
+  // 🔹 Fetch all correction requests (GET)
+  const fetchRequests = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(
+        "https://attendance-backend-3fjj.onrender.com/api/correction/admin",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const data = await res.json();
+
+      if (res.ok && data.data) {
+        setRequests(data.data);
+      } else {
+        console.error("Error:", data.message);
+      }
+    } catch (error) {
+      console.error("Fetch Error:", error);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  // 🔹 Approve or Reject (PUT)
+  const handleAction = async (id, action) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const res = await fetch(
+        `https://attendance-backend-3fjj.onrender.com/api/correction/admin/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ action }),
+        }
+      );
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert(data.message);
+        // update UI instantly
+        setRequests((prev) =>
+          prev.map((req) =>
+            req._id === id ? { ...req, status: action } : req
+          )
+        );
+      } else {
+        alert(data.message || "Failed to update correction status");
+      }
+    } catch (error) {
+      console.error("Error updating correction:", error);
+      alert("Server Error");
+    }
+  };
+
+  useEffect(() => {
+    fetchRequests();
+  }, []);
+
+  if (loading) return <p style={{ textAlign: "center" }}>Loading requests...</p>;
 
   return (
     <div className="correction-requests">
@@ -38,16 +83,27 @@ const CorrectionRequests = () => {
       <div className="requests-list">
         {requests.length > 0 ? (
           requests.map((req) => (
-            <div key={req.id} className="request-card">
+            <div key={req._id} className="request-card">
               <div className="user-info">
-                <img src={req.image} alt={req.name} className="avatar" />
+                <img
+                  src={req.image || "https://i.ibb.co/Vw1ytPJ/user1.png"}
+                  alt={req.name}
+                  className="avatar"
+                />
                 <div className="user-details">
                   <h4>{req.name}</h4>
                   <small>Date: {req.date}</small>
                 </div>
-                <a href="#" className="evidence-link">
-                  📎 Evidence
-                </a>
+                {req.attachment && (
+                  <a
+                    href={req.attachment}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="evidence-link"
+                  >
+                    📎 Evidence
+                  </a>
+                )}
               </div>
 
               <p className="reason">
@@ -58,13 +114,13 @@ const CorrectionRequests = () => {
                 <div className="action-buttons">
                   <button
                     className="reject"
-                    onClick={() => handleAction(req.id, "Rejected")}
+                    onClick={() => handleAction(req._id, "Rejected")}
                   >
                     Reject
                   </button>
                   <button
                     className="approve"
-                    onClick={() => handleAction(req.id, "Approved")}
+                    onClick={() => handleAction(req._id, "Approved")}
                   >
                     Approve
                   </button>
@@ -84,7 +140,7 @@ const CorrectionRequests = () => {
           <div className="empty-state">
             <div className="check-icon">✅</div>
             <h4>All Caught Up!</h4>
-            <p>There are no pending correction requests at the moment.</p>
+            <p>No pending correction requests at the moment.</p>
           </div>
         )}
       </div>
