@@ -20,6 +20,7 @@ import LeaveForm from "./Pages/LeaveForm";
 import MyLeaves from "./Pages/MyLeaves";
 import CorrectionForm from "./Pages/CorrectionForm";
 import MyCorrections from "./Pages/MyCorrections";
+import StudentTrackingForm from "./Pages/StudentTrackingForm";
 
 
 
@@ -72,6 +73,7 @@ function App() {
           <Route path="/my-leaves" element={<MyLeaves />} />
           <Route path="/correction-request" element={<CorrectionForm />} />
           <Route path="/my-corrections" element={<MyCorrections />} />
+          <Route path="/student-tracking" element={<StudentTrackingForm />} />
         </Routes>
       </div>
     </Router>
