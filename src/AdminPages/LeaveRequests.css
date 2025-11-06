@@ -1,4 +1,4 @@
-.leave-requests {
+/* .leave-requests {
   background: #f8fbff;
   padding: 30px;
   height: 100vh;
@@ -132,4 +132,377 @@
 .modal-buttons .confirm {
   background: #1976d2;
   color: white;
+} */
+
+
+/* 🌟 Main Container
+.admin-leave-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
+.admin-leave-container h2 {
+  text-align: center;
+  color: #ff6600;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-leave-container h3 {
+  color: #444;
+  margin-top: 2rem;
+  border-left: 5px solid #ff6600;
+  padding-left: 10px;
+  font-size: 1.3rem;
+}
+.response-message {
+  text-align: center;
+  color: #0a9928;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.admin-leave-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.admin-leave-card {
+  background: #fafafa;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  padding: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.admin-leave-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.status-pending {
+  color: #f5a623;
+  font-weight: 600;
+}
+
+.status-approved {
+  color: #0a9928;
+  font-weight: 600;
+}
+
+.status-rejected {
+  color: #e63946;
+  font-weight: 600;
+}
+
+.admin-leave-card.approved {
+  border-color: #0a9928;
+  background: #f2fff5;
+}
+
+.admin-leave-card.rejected {
+  border-color: #e63946;
+  background: #fff5f5;
+}
+
+.admin-action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.admin-action-buttons button {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.approve-btn {
+  background-color: #0a9928;
+  color: #fff;
+}
+
+.approve-btn:hover {
+  background-color: #078b22;
+}
+
+.reject-btn {
+  background-color: #e63946;
+  color: #fff;
+}
+
+.reject-btn:hover {
+  background-color: #c82333;
+}
+
+
+@media (max-width: 1024px) {
+  .admin-leave-container {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .admin-leave-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .admin-leave-card {
+    padding: 1rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .admin-leave-container {
+    padding: 1rem;
+  }
+
+  .admin-leave-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .admin-leave-container h3 {
+    font-size: 1.1rem;
+  }
+
+  .admin-action-buttons {
+    flex-direction: column;
+  }
+
+  .admin-action-buttons button {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-leave-container {
+    padding: 0.8rem;
+  }
+
+  .admin-leave-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .admin-leave-card {
+    padding: 0.8rem;
+  }
+
+  .admin-leave-card p {
+    font-size: 0.9rem;
+  }
+
+  .admin-action-buttons button {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+} */
+
+
+/* 🌟 Main Container */
+.admin-leave-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
+/* 🧾 Headings */
+.admin-leave-container h2 {
+  text-align: center;
+  color: #ff6600;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-leave-container h3 {
+  color: #444;
+  margin-top: 2rem;
+  border-left: 5px solid #ff6600;
+  padding-left: 10px;
+  font-size: 1.3rem;
+}
+
+/* 📢 Messages */
+.response-message {
+  text-align: center;
+  color: #0a9928;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* 🗂️ List Layout */
+.admin-leave-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* 🧾 Card Style */
+.admin-leave-card {
+  background: #fafafa;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  padding: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.admin-leave-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ✅ Status Colors */
+.status-pending {
+  color: #f5a623;
+  font-weight: 600;
+}
+
+.status-approved {
+  color: #0a9928;
+  font-weight: 600;
+}
+
+.status-rejected {
+  color: #e63946;
+  font-weight: 600;
+}
+
+/* 🎨 Card Variants */
+.admin-leave-card.approved {
+  border-color: #0a9928;
+  background: #f2fff5;
+}
+
+.admin-leave-card.rejected {
+  border-color: #e63946;
+  background: #fff5f5;
+}
+
+/* 👇 Action Buttons */
+.admin-action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.admin-action-buttons button {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+/* 🟢 Approve Button */
+.approve-btn {
+  background-color: #0a9928;
+  color: #fff;
+}
+
+.approve-btn:hover {
+  background-color: #078b22;
+}
+
+/* 🔴 Reject Button */
+.reject-btn {
+  background-color: #e63946;
+  color: #fff;
+}
+
+.reject-btn:hover {
+  background-color: #c82333;
+}
+
+/* 🖥️ Responsive Styles */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .admin-leave-container {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .admin-leave-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .admin-leave-card {
+    padding: 1rem;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) {
+  .admin-leave-container {
+    padding: 1rem;
+  }
+
+  .admin-leave-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .admin-leave-container h3 {
+    font-size: 1.1rem;
+  }
+
+  .admin-action-buttons {
+    flex-direction: column;
+  }
+
+  .admin-action-buttons button {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+  .admin-leave-container {
+    padding: 0.8rem;
+  }
+
+  .admin-leave-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .admin-leave-card {
+    padding: 0.8rem;
+  }
+
+  .admin-leave-card p {
+    font-size: 0.9rem;
+  }
+
+  .admin-action-buttons button {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
 }
