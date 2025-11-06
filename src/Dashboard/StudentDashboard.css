@@ -1,125 +1,186 @@
 .student-dashboard {
   display: flex;
   min-height: 100vh;
-  background: linear-gradient(135deg, #e3f2fd, #ffffff);
+  background: #f7f7f7;
   font-family: "Poppins", sans-serif;
+  color: #111;
 }
 
 
-.student_sidebar {
-  flex: 0 0 230px;
+.student-dashboard-sidebar {
+  width: 250px;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  bottom: 0;
+  background: #111;
+  color: #fff;
+  padding: 20px 15px;
+  transition: all 0.3s ease-in-out;
+  overflow-y: auto;
+  z-index: 10;
 }
 
 
 .student-dashboard-content {
   flex: 1;
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-left: 250px;
+  padding: 90px 30px 30px; 
+  transition: all 0.3s ease-in-out;
 }
 
 .student-dashboard-content h2 {
-  font-size: 26px;
-  color: #333;
+  font-size: 28px;
+  color: #222;
+  margin-bottom: 25px;
+  text-align: center;
   font-weight: 600;
-  margin-bottom: 30px;
 }
 
 
 .student-status-card {
-  width: 90%;
-  max-width: 450px;
-  padding: 30px 20px;
-  border-radius: 16px;
+  max-width: 400px;
+  margin: 0 auto;
   text-align: center;
-  margin-bottom: 25px;
+  padding: 30px 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
 
 
 .student-glass-effect {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.student-status-card h3 {
-  font-size: 20px;
-  color: #222;
-  margin-bottom: 10px;
-}
 
-.student-status-card p {
+.student-status-text {
   font-size: 22px;
   font-weight: 600;
+  margin-top: 15px;
   text-transform: capitalize;
-  margin: 8px 0 0;
+  transition: color 0.3s ease;
 }
 
 
-.student-status-card.present {
-  color: #2e7d32; 
+.student-status-text.present {
+  color: #22c55e; 
 }
 
-.student-status-card.absent {
-  color: #d32f2f; 
+.student-status-text.absent {
+  color: #ef4444; 
 }
 
-.student-status-card.leave {
-  color: #1976d2; 
+.student-status-text.on-leave,
+.student-status-text.leave {
+  color: #f59e0b; 
 }
 
-.student-status-card.kitchen-turn {
-  color: #f57c00; 
+.student-status-text.kitchen-turn {
+  color: #3b82f6;
 }
 
-.student-status-card.loading {
-  color: #555;
+.student-status-text.no-status-yet,
+.student-status-text.loading {
+  color: #6b7280;
 }
 
 
 .student-note {
   text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
   color: #555;
-  font-size: 13px;
-  margin-top: 15px;
+  line-height: 1.5;
+}
+
+.student-note small b {
+  color: #111;
 }
 
 
-@media (max-width: 900px) {
+.student-status-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.student-status-text.present {
+  animation: glowGreen 2s infinite alternate;
+}
+
+@keyframes glowGreen {
+  0% {
+    text-shadow: 0 0 5px #22c55e;
+  }
+  100% {
+    text-shadow: 0 0 15px #16a34a;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .student-dashboard-sidebar {
+    width: 200px;
+  }
+
+  .student-dashboard-content {
+    margin-left: 200px;
+    padding: 80px 20px;
+  }
+
+  .student-status-card {
+    max-width: 350px;
+  }
+
+  .student-dashboard-content h2 {
+    font-size: 24px;
+  }
+}
+
+
+@media (max-width: 768px) {
   .student-dashboard {
     flex-direction: column;
   }
 
-  .student_sidebar {
+  .student-dashboard-sidebar {
+    position: relative;
     width: 100%;
-    flex: 0 0 auto;
+    top: 0;
+    background: #111;
+    text-align: center;
   }
 
   .student-dashboard-content {
-    width: 100%;
-    padding: 25px 15px;
+    margin-left: 0;
+    padding: 80px 15px 20px;
   }
 
   .student-status-card {
-    width: 100%;
     padding: 25px 15px;
   }
 
   .student-dashboard-content h2 {
     font-size: 22px;
   }
-}
 
-@media (max-width: 500px) {
-  .student-status-card h3 {
+  .student-status-text {
     font-size: 18px;
   }
+}
 
-  .student-status-card p {
-    font-size: 20px;
+
+@media (max-width: 480px) {
+  .student-status-card {
+    padding: 20px 10px;
+  }
+
+  .student-status-text {
+    font-size: 16px;
   }
 
   .student-note {

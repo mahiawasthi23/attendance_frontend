@@ -5,6 +5,7 @@ import "./LeaveForm.css";
 
 const LeaveForm = () => {
   const [formData, setFormData] = useState({
+    name: "",
     startDate: "",
     endDate: "",
     reason: "",
