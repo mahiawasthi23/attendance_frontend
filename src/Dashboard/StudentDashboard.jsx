@@ -114,7 +114,7 @@ const StudentDashboard = () => {
 
         <div className="student-note">
           <small>
-            ⏱️ Status auto-updates every minute based on QR Scan, Kitchen Turn,
+            Status auto-updates every minute based on QR Scan, Kitchen Turn,
             Leave, or Approved Correction. After 9:20 AM, if no action — status
             becomes Absent.
           </small>
