@@ -7,9 +7,12 @@ const StudentDashboard = () => {
   const [label, setLabel] = useState("Today Status");
   const [loading, setLoading] = useState(true);
 
-
-  const ATTENDANCE_URL = "https://attendance-backend-3fjj.onrender.com/api/attendance/today";
-  const LEAVE_URL = "https://attendance-backend-3fjj.onrender.com/api/leave/my-leaves";
+  const ATTENDANCE_URL =
+    "https://attendance-backend-3fjj.onrender.com/api/attendance/today";
+  const YESTERDAY_URL =
+    "https://attendance-backend-3fjj.onrender.com/api/attendance/yesterday";
+  const LEAVE_URL =
+    "https://attendance-backend-3fjj.onrender.com/api/leave/my-leaves";
 
   const fetchStatus = async () => {
     try {
@@ -24,28 +27,30 @@ const StudentDashboard = () => {
       const hours = now.getHours();
       const minutes = now.getMinutes();
 
-     
+    
       if (hours >= 0 && hours < 9) {
         setLabel("Yesterday Status");
       } else {
         setLabel("Today Status");
       }
 
-      const attendanceRes = await fetch(ATTENDANCE_URL, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const attendanceData = await attendanceRes.json();
+     
+      const [attendanceRes, leaveRes] = await Promise.all([
+        fetch(ATTENDANCE_URL, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }),
+        fetch(LEAVE_URL, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }),
+      ]);
 
-   
-      const leaveRes = await fetch(LEAVE_URL, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const attendanceData = await attendanceRes.json();
       const leaveData = await leaveRes.json();
 
       const today = new Date().toISOString().split("T")[0];
@@ -58,11 +63,18 @@ const StudentDashboard = () => {
           today <= leave.endDate
       );
 
-      if (approvedLeaveToday) {
-        setStatus(approvedLeaveToday.typeOfLeave || "Leave");
-      } 
-      else if (attendanceData.status) {
+    
+      if (hours >= 0 && hours < 9) {
       
+        if (attendanceData?.yesterdayStatus) {
+          setStatus(attendanceData.yesterdayStatus);
+        } else {
+          setStatus("No Data (Yesterday)");
+        }
+      } else if (approvedLeaveToday) {
+        setStatus(`On ${approvedLeaveToday.typeOfLeave}`);
+      } else if (attendanceData.status) {
+       
         if (
           attendanceData.source === "Correction" &&
           attendanceData.status === "Present"
@@ -71,9 +83,8 @@ const StudentDashboard = () => {
         } else {
           setStatus(attendanceData.status);
         }
-      } 
-      else {
-   
+      } else {
+      
         if (hours > 9 || (hours === 9 && minutes >= 20)) {
           setStatus("Absent");
         } else {
@@ -90,7 +101,7 @@ const StudentDashboard = () => {
 
   useEffect(() => {
     fetchStatus();
-    const interval = setInterval(fetchStatus, 60000); // refresh every 1 min
+    const interval = setInterval(fetchStatus, 60000); 
     return () => clearInterval(interval);
   }, []);
 
@@ -115,8 +126,11 @@ const StudentDashboard = () => {
         <div className="student-note">
           <small>
             ⏱️ Status auto-updates every minute based on QR Scan, Kitchen Turn,
-            Leave, or Approved Correction. After 9:20 AM, if no action — status
-            becomes Absent.
+            or Approved Leave. After 9:20 AM, if no action — status becomes
+            <b> Absent</b>.  
+            <br />
+            🌙 After midnight (12 AM–9 AM), dashboard shows your <b>Yesterday
+            Status</b>.
           </small>
         </div>
       </div>
