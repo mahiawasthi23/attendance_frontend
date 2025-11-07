@@ -28,7 +28,7 @@ const StudentDashboard = () => {
       const minutes = now.getMinutes();
       const today = now.toISOString().split("T")[0];
 
-     
+  
       const [attendanceRes, leaveRes, yesterdayRes] = await Promise.all([
         fetch(ATTENDANCE_URL, {
           headers: {
@@ -54,21 +54,38 @@ const StudentDashboard = () => {
       const leaveData = await leaveRes.json();
       const yesterdayData = await yesterdayRes.json();
 
-   
-      const approvedLeaveToday = leaveData.data?.find(
-        (leave) =>
-          leave.status === "Approved" &&
-          today >= leave.startDate &&
-          today <= leave.endDate
-      );
+      const leavesArray = Array.isArray(leaveData)
+        ? leaveData
+        : leaveData.leaves || leaveData.data || [];
 
-     
+      
+      const approvedLeaveToday = leavesArray.find((leave) => {
+        if (leave.status !== "Approved") return false;
+        const start = new Date(leave.startDate);
+        const end = new Date(leave.endDate);
+        const current = new Date(today);
+        return current >= start && current <= end;
+      });
+
+   
       if (approvedLeaveToday) {
         setLabel("Today Status");
         setStatus(`On ${approvedLeaveToday.typeOfLeave}`);
       }
 
   
+      else if (attendanceData?.status) {
+        setLabel("Today Status");
+        if (
+          attendanceData.source === "Correction" &&
+          attendanceData.status === "Present"
+        ) {
+          setStatus("Present (via Correction)");
+        } else {
+          setStatus(attendanceData.status);
+        }
+      }
+
       else if (hours < 9 || (hours === 9 && minutes < 20)) {
         setLabel("Yesterday Status");
         if (yesterdayData?.status) {
@@ -78,22 +95,10 @@ const StudentDashboard = () => {
         }
       }
 
-    
+     
       else {
         setLabel("Today Status");
-
-        if (attendanceData?.status) {
-          if (
-            attendanceData.source === "Correction" &&
-            attendanceData.status === "Present"
-          ) {
-            setStatus("Present (via Correction)");
-          } else {
-            setStatus(attendanceData.status);
-          }
-        } else {
-          setStatus("Absent");
-        }
+        setStatus("Absent");
       }
     } catch (error) {
       console.error("Error fetching status:", error);
@@ -105,7 +110,7 @@ const StudentDashboard = () => {
 
   useEffect(() => {
     fetchStatus();
-    const interval = setInterval(fetchStatus, 60000); 
+    const interval = setInterval(fetchStatus, 60000);
     return () => clearInterval(interval);
   }, []);
 
@@ -129,13 +134,16 @@ const StudentDashboard = () => {
 
         <div className="student-note">
           <small>
-            ⏱️ Status auto-updates every minute based on QR Scan, Kitchen Turn,
-            or Approved Leave. After 9:20 AM, if no action — status becomes
-            <b> Absent</b>.
+            ⏱️ Dashboard auto-updates every minute.  
             <br />
-            🌙 Between 12 AM–9:20 AM, dashboard shows your <b>Yesterday
-            Status</b>. If you’re on approved leave today, it will always show
-            your <b>Leave Type</b>.
+            🌙 Between <b>12 AM–9:20 AM</b>, it shows your{" "}
+            <b>Yesterday’s Status</b> if no action is taken.  
+            <br />
+            🌞 If you have <b>QR scanned, Kitchen Turn form</b> filled, or{" "}
+            <b>Leave approved</b>, your <b>Today’s Status</b> is shown instantly.  
+            <br />
+            🚫 After <b>9:20 AM</b>, if no action — status becomes{" "}
+            <b>Absent</b>.
           </small>
         </div>
       </div>

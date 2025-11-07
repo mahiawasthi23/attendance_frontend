@@ -77,11 +77,11 @@
 
 .student-status-text.on-leave,
 .student-status-text.leave {
-  color: #f59e0b; 
+  color: #3b82f6;
 }
 
 .student-status-text.kitchen-turn {
-  color: #3b82f6;
+  color:#f59e0b
 }
 
 .student-status-text.no-status-yet,
@@ -114,10 +114,10 @@
 
 @keyframes glowGreen {
   0% {
-    text-shadow: 0 0 5px #22c55e;
+    text-shadow: 0 0 5px #16cb58;
   }
   100% {
-    text-shadow: 0 0 15px #16a34a;
+    text-shadow: 0 0 15px #0ad253;
   }
 }
 
