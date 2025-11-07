@@ -33,19 +33,19 @@ const StudentDashboard = () => {
         fetch(ATTENDANCE_URL, {
           headers: {
             "Content-Type": "application/json",
-            Authorization: Bearer ${token},
+            Authorization: `Bearer ${token}`,
           },
         }),
         fetch(LEAVE_URL, {
           headers: {
             "Content-Type": "application/json",
-            Authorization: Bearer ${token},
+            Authorization: `Bearer ${token}`,
           },
         }),
         fetch(YESTERDAY_URL, {
           headers: {
             "Content-Type": "application/json",
-            Authorization: Bearer ${token},
+            Authorization: `Bearer ${token}`,
           },
         }),
       ]);
@@ -70,7 +70,7 @@ const StudentDashboard = () => {
    
       if (approvedLeaveToday) {
         setLabel("Today Status");
-        setStatus(On ${approvedLeaveToday.typeOfLeave});
+        setStatus(`On ${approvedLeaveToday.typeOfLeave}`);
       }
 
   
