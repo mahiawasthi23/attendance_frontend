@@ -26,9 +26,9 @@ const AdminDashboardSidebar = () => {
                 <li onClick={() => navigate("/admin/qr-generator")}>
                     <FaQrcode /> QR Generator
                 </li>
-                <li onClick={() => navigate("/admin/student-records")}>
+                {/* <li onClick={() => navigate("/admin/student-records")}>
                     <FaUserGraduate /> Student Records
-                </li>
+                </li> */}
                 <li onClick={() => navigate("/admin/leave-requests")}>
                     <FaClipboardList /> Leave Requests
                 </li>
@@ -39,6 +39,11 @@ const AdminDashboardSidebar = () => {
                 <li onClick={() => navigate("/admin/lifecycle-tracking")}>
                     <FaChartLine /> Life Cycle Tracking
                 </li>
+
+                 <li onClick={() => navigate("/admin/student-records")}>
+                    <FaUserGraduate /> Student Records
+                </li>
+                
                 <li onClick={() => navigate("/admin/reports-endflow")}>
                     <FaFileAlt /> Reports & End Flow
                 </li>
