@@ -5,7 +5,6 @@ const CorrectionRequests = () => {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔹 Fetch all correction requests (GET)
   const fetchRequests = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -34,7 +33,6 @@ const CorrectionRequests = () => {
     }
   };
 
-  // 🔹 Approve or Reject (PUT)
   const handleAction = async (id, action) => {
     try {
       const token = localStorage.getItem("token");
@@ -55,7 +53,6 @@ const CorrectionRequests = () => {
 
       if (res.ok) {
         alert(data.message);
-        // update UI instantly
         setRequests((prev) =>
           prev.map((req) =>
             req._id === id ? { ...req, status: action } : req

@@ -45,7 +45,6 @@ const LifecycleTracking = () => {
     <div className="lifecycle-tracking">
       <h2>Lifecycle Tracking</h2>
 
-      {/* Tabs */}
       <div className="tabs">
         {["Admissions", "Placements", "Dropouts"].map((tab) => (
           <button
@@ -58,7 +57,6 @@ const LifecycleTracking = () => {
         ))}
       </div>
 
-      {/* Search and Filters */}
       <div className="filters">
         <input
           type="text"
@@ -80,7 +78,6 @@ const LifecycleTracking = () => {
         </div>
       </div>
 
-      {/* Student List */}
       <div className="student-list">
         {filteredStudents.length > 0 ? (
           filteredStudents.map((student) => (
