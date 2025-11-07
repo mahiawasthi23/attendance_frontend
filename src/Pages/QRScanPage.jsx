@@ -11,17 +11,33 @@ const QRScanPage = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  
-  const markAttendance = async (qrData) => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (qrData === "VALID_QR_CODE") {
-          resolve({ success: true, status: "Present" });
-        } else {
-          reject({ success: false, message: "Invalid or Expired QR" });
+  const handleMarkAttendance = async (qrData) => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(
+        "https://attendance-backend-3fjj.onrender.com/api/attendance/validate",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ qrCode: qrData }),
         }
-      }, 1000);
-    });
+      );
+      const data = await res.json();
+      if (res.ok) {
+        setMessage("✅ Attendance Marked Successfully!");
+        setStatus("success");
+      } else {
+        setMessage("❌ " + data.message);
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setMessage("⚠️ Server error while marking attendance");
+      setStatus("error");
+    }
   };
 
   useEffect(() => {
@@ -29,59 +45,40 @@ const QRScanPage = () => {
 
     const startScanner = async () => {
       try {
-        setLoading(true);
         const devices = await BrowserMultiFormatReader.listVideoInputDevices();
-
         if (devices.length === 0) {
           alert("❌ No camera found!");
-          setLoading(false);
           return;
         }
 
-        const selectedDeviceId = devices[0].deviceId; 
+        const selectedDeviceId = devices[0].deviceId;
         setLoading(false);
 
         await codeReader.decodeFromVideoDevice(selectedDeviceId, "video", async (res, err) => {
           if (res) {
             const scannedData = res.getText();
             setResult(scannedData);
-
-            try {
-              const response = await markAttendance(scannedData);
-              if (response.success) {
-                setMessage("✅ Attendance Marked Successfully!");
-                setStatus("success");
-              }
-            } catch (error) {
-              setMessage("❌ " + error.message);
-              setStatus("error");
-            }
-
+            await handleMarkAttendance(scannedData);
             codeReader.reset();
           }
 
           if (err && !(err.name === "NotFoundException")) {
-            console.error("QR error:", err);
+            console.error(err);
           }
         });
       } catch (error) {
         console.error("Camera error:", error);
-        setLoading(false);
-        alert("Please allow camera permission and try again.");
+        alert("Please allow camera permission.");
       }
     };
 
     startScanner();
 
     return () => {
-      try {
-        codeReader.reset();
-        const video = document.getElementById("video");
-        if (video && video.srcObject) {
-          video.srcObject.getTracks().forEach((track) => track.stop());
-        }
-      } catch (e) {
-        console.warn("Cleanup skipped:", e);
+      codeReader.reset();
+      const video = document.getElementById("video");
+      if (video?.srcObject) {
+        video.srcObject.getTracks().forEach((t) => t.stop());
       }
     };
   }, []);
