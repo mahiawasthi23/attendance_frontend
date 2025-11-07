@@ -28,6 +28,8 @@ const LifecycleTracking = () => {
 
   const [activeTab, setActiveTab] = useState("Admissions");
   const [searchTerm, setSearchTerm] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   const handleVerify = (id) => {
     setStudents((prev) =>
@@ -37,19 +39,27 @@ const LifecycleTracking = () => {
     );
   };
 
-  const filteredStudents = students.filter((student) =>
-    student.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredStudents = students.filter((student) => {
+    const matchSearch = student.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    const studentDate = new Date(student.date);
+    const afterStart = startDate ? studentDate >= new Date(startDate) : true;
+    const beforeEnd = endDate ? studentDate <= new Date(endDate) : true;
+
+    return matchSearch && afterStart && beforeEnd;
+  });
 
   return (
-    <div className="lifecycle-tracking">
+    <div className="admin-lifecycle-tracking">
       <h2>Lifecycle Tracking</h2>
 
-      <div className="tabs">
+      <div className="admin-tabs">
         {["Admissions", "Placements", "Dropouts"].map((tab) => (
           <button
             key={tab}
-            className={`tab-btn ${activeTab === tab ? "active" : ""}`}
+            className={`admin-tab-btn ${activeTab === tab ? "active" : ""}`}
             onClick={() => setActiveTab(tab)}
           >
             {tab}
@@ -57,39 +67,43 @@ const LifecycleTracking = () => {
         ))}
       </div>
 
-      <div className="filters">
+      <div className="admin-filters">
         <input
           type="text"
           placeholder="Search by Name or Email"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <div className="dropdowns">
-          <select>
-            <option>Filter by Month</option>
-            <option>August 2024</option>
-            <option>September 2024</option>
-          </select>
-          <select>
-            <option>Filter by Date</option>
-            <option>10 Aug 2024</option>
-            <option>12 Aug 2024</option>
-          </select>
+        <div className="admin-date-range-inline">
+          <div className="admin-date-label">Filter by Date Range:</div>
+          <div className="admin-date-inputs">
+            <input
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+            />
+            <span>to</span>
+            <input
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+            />
+          </div>
         </div>
       </div>
 
-      <div className="student-list">
+      <div className="admin-student-list">
         {filteredStudents.length > 0 ? (
           filteredStudents.map((student) => (
-            <div key={student.id} className="student-card">
-              <div className="student-info">
+            <div key={student.id} className="admin-student-card">
+              <div className="admin-student-info">
                 <div>
                   <h4>{student.name}</h4>
                   <small>{student.email}</small>
                   <p>Date: {student.date}</p>
                 </div>
                 <span
-                  className={`status-tag ${
+                  className={`admin-status-tag ${
                     student.status === "Verified" ? "verified" : "unverified"
                   }`}
                 >
@@ -99,24 +113,22 @@ const LifecycleTracking = () => {
 
               {student.status === "Unverified" ? (
                 <button
-                  className="verify-btn"
+                  className="admin-verify-btn"
                   onClick={() => handleVerify(student.id)}
                 >
                   Verify
                 </button>
               ) : (
-                <button className="verified-btn">
-                  ✅ Verified
-                </button>
+                <button className="admin-verified-btn">✅ Verified</button>
               )}
             </div>
           ))
         ) : (
-          <div className="empty-state">
-            <div className="icon">🔍</div>
+          <div className="admin-empty-state">
+            <div className="admin-icon">🔍</div>
             <h4>No Records Found</h4>
             <p>
-              Try adjusting your search or filter criteria to find what you’re
+              Try adjusting your search or date range to find what you’re
               looking for.
             </p>
           </div>
