@@ -131,21 +131,6 @@ const StudentDashboard = () => {
             {loading ? "Loading..." : status}
           </p>
         </div>
-
-        {/* <div className="student-note">
-          <small>
-            ⏱️ Dashboard auto-updates every minute.  
-            <br />
-            🌙 Between <b>12 AM–9:20 AM</b>, it shows your{" "}
-            <b>Yesterday’s Status</b> if no action is taken.  
-            <br />
-            🌞 If you have <b>QR scanned, Kitchen Turn form</b> filled, or{" "}
-            <b>Leave approved</b>, your <b>Today’s Status</b> is shown instantly.  
-            <br />
-            🚫 After <b>9:20 AM</b>, if no action — status becomes{" "}
-            <b>Absent</b>.
-          </small>
-        </div> */}
       </div>
     </div>
   );
