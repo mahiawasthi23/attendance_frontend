@@ -30,8 +30,8 @@
 }
 
 .student-dashboard-content h2 {
-  font-size: 28px;
-  color: #222;
+  font-size: 2.5rem;
+  color: rgb(202, 55, 2);
   margin-bottom: 25px;
   text-align: center;
   font-weight: 600;
@@ -42,12 +42,18 @@
   max-width: 400px;
   margin: 0 auto;
   text-align: center;
-  padding: 30px 20px;
+  padding: 50px 100px 100px 100px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+}
+
+.student-status-card h3 {
+  font-size: 35px;
+  color: black;
+  margin-bottom: 15px;
 }
 
 
@@ -59,7 +65,7 @@
 
 
 .student-status-text {
-  font-size: 22px;
+  font-size: 30px;
   font-weight: 600;
   margin-top: 15px;
   text-transform: capitalize;
@@ -90,7 +96,7 @@
 }
 
 
-.student-note {
+/* .student-note {
   text-align: center;
   margin-top: 30px;
   font-size: 14px;
@@ -100,7 +106,7 @@
 
 .student-note small b {
   color: #111;
-}
+} */
 
 
 .student-status-card:hover {
@@ -156,12 +162,12 @@
   }
 
   .student-dashboard-content {
-    margin-left: 0;
+    margin-left: 0px;
     padding: 80px 15px 20px;
   }
 
   .student-status-card {
-    padding: 25px 15px;
+    padding: 100px 20px;
   }
 
   .student-dashboard-content h2 {
@@ -183,8 +189,8 @@
     font-size: 16px;
   }
 
-  .student-note {
+  /* .student-note {
     font-size: 12px;
-  }
+  } */
 }
 

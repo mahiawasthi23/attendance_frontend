@@ -132,7 +132,7 @@ const StudentDashboard = () => {
           </p>
         </div>
 
-        <div className="student-note">
+        {/* <div className="student-note">
           <small>
             ⏱️ Dashboard auto-updates every minute.  
             <br />
@@ -145,7 +145,7 @@ const StudentDashboard = () => {
             🚫 After <b>9:20 AM</b>, if no action — status becomes{" "}
             <b>Absent</b>.
           </small>
-        </div>
+        </div> */}
       </div>
     </div>
   );
