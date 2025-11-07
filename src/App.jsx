@@ -75,6 +75,7 @@ function App() {
           <Route path="/correction-request" element={<CorrectionForm />} />
           <Route path="/my-corrections" element={<MyCorrections />} />
           <Route path="/view-history" element={<StudentHistory studentId={123} />} />
+          <Route path="/student-tracking" element={<StudentTrackingForm />} />
         </Routes>
       </div>
     </Router>
