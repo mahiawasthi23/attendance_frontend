@@ -1,6 +1,6 @@
 .correction-requests {
   background: #f8fbff;
-  padding: 30px;
+  padding: 100px;
   min-height: 100vh;
   text-align: center;
 }
@@ -20,12 +20,20 @@
   padding: 20px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
   text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.request-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 .user-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .avatar {
@@ -40,6 +48,7 @@
 
 .user-details small {
   color: gray;
+  font-size: 13px;
 }
 
 .evidence-link {
@@ -47,6 +56,7 @@
   color: #1976d2;
   font-weight: 600;
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .reason {
@@ -59,6 +69,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .action-buttons button {
@@ -68,6 +79,7 @@
   color: white;
   cursor: pointer;
   font-size: 14px;
+  transition: all 0.2s ease;
 }
 
 .reject {
@@ -76,6 +88,11 @@
 
 .approve {
   background: #4caf50;
+}
+
+.action-buttons button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
 }
 
 .status {
@@ -111,4 +128,82 @@
 .empty-state p {
   color: #777;
   font-size: 14px;
+}
+
+/* Mobile Devices (max-width: 600px) */
+@media (max-width: 600px) {
+  .correction-requests {
+    padding: 40px 30px;
+  }
+
+  .request-card {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    width: 45px;
+    height: 45px;
+  }
+
+  .user-details h4 {
+    font-size: 16px;
+  }
+
+  .user-details small {
+    font-size: 12px;
+  }
+
+  .reason {
+    font-size: 13px;
+  }
+
+  .action-buttons {
+    justify-content: center;
+  }
+
+  .action-buttons button {
+    width: 100px;
+    font-size: 13px;
+  }
+
+  .evidence-link {
+    font-size: 13px;
+  }
+}
+
+/* Tablets (601px–900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+  .requests-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .request-card {
+    width: 45%;
+    min-width: 300px;
+  }
+
+  .user-info {
+    flex-wrap: nowrap;
+  }
+}
+
+/* Laptops / Desktops (901px and up) */
+@media (min-width: 901px) {
+  .requests-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .request-card {
+    width: 30%;
+    min-width: 320px;
+  }
 }
