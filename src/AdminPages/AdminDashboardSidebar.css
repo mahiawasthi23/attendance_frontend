@@ -1,7 +1,7 @@
 .sidebar {
-  width: 230px;
-  background: #2196f3;
-  color: white;
+  width: 210px;
+  background: #f5f4f4;
+  color: rgb(56, 55, 55);
   height: 100vh;
   padding: 20px;
   position: fixed;
@@ -21,7 +21,7 @@
 .sidebar ul li {
   display: flex;
   align-items: center;
-  padding: 10px 5px;
+  padding: 18px 2px;
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
@@ -32,6 +32,6 @@
 }
 
 .sidebar ul li:hover {
-  background: #1976d2;
+  background: #d2d3d3;
   border-radius: 8px;
 }
