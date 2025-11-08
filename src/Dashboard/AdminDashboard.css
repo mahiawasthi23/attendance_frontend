@@ -1,4 +1,4 @@
-.admin-dashboard {
+/* .admin-dashboard {
   display: flex;
   height: 100vh;
   background: #f8f9fc;
@@ -75,4 +75,102 @@
   justify-content: center;
   align-items: center;
 }
+ */
 
+
+ .admin-dashboard {
+  display: flex;
+  height: 100vh;
+  background: #f8f9fc;
+}
+
+.admin-dashboard-content{
+  flex: 1;
+  padding: 30px;
+  margin-left: 250px;
+  overflow-y: auto;
+}
+
+.admin-dashboard-content .subtitle {
+  color: #555;
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* 🟦 Compact 5 cards ek line me */
+.admin-dashboard-content .stats-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: nowrap;
+}
+
+.admin-dashboard-content .stat-box {
+  flex: 1;
+  background: white;
+  border-radius: 10px;
+  padding: 15px 10px;
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-dashboard-content .stat-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.admin-dashboard-content  .stat-box h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.admin-dashboard-content  .stat-box p {
+  font-size: 13px;
+  margin: 0;
+}
+
+/* 🎨 Individual card colors */
+.admin-dashboard-content   .total {
+  background: #8e44ad;
+  color: white;
+}
+
+.admin-dashboard-content .present {
+  background: #4caf50;
+  color: white;
+}
+
+.admin-dashboard-content .absent {
+  background: #e74c3c;
+  color: white;
+}
+
+.admin-dashboard-content  .kitchen {
+  background: #f98715;
+  color: white;
+}
+
+.admin-dashboard-content .leave {
+  background: #1797ff;
+  color: black;
+}
+
+/* 📊 Chart section */
+.admin-dashboard-content .chart-container {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 400px;
+  width: 500px;
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

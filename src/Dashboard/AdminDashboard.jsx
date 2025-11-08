@@ -61,11 +61,17 @@ const AdminDashboard = () => {
     <div className="admin-dashboard">
       <AdminDashboardSidebar />
 
-      <div className="dashboard-content">
+      <div className="admin-dashboard-content">
         <h2>Welcome back, {user.name} 👋</h2>
         <p className="subtitle">Today’s Attendance Summary</p>
 
         <div className="stats-grid">
+          
+          <div className="stat-box total">
+            <h3>{stats.totalStudents}</h3>
+            <p>Total Students</p>
+          </div>
+
           <div className="stat-box present">
             <h3>{stats.presentCount}</h3>
             <p>Present</p>
@@ -82,10 +88,10 @@ const AdminDashboard = () => {
             <h3>{stats.kitchenCount}</h3>
             <p>Kitchen Turn</p>
           </div>
-          <div className="stat-box total">
+          {/* <div className="stat-box total">
             <h3>{stats.totalStudents}</h3>
             <p>Total Students</p>
-          </div>
+          </div> */}
         </div>
 
         <div className="chart-container">
