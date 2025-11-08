@@ -91,11 +91,14 @@
   overflow-y: auto;
 }
 
-.admin-dashboard-content .subtitle {
+.subtitle {
   color: #555;
-  margin-bottom: 20px;
-  font-weight: 500;
+  /* margin-top: 60px; */
+  font-size:larger;
+  font-weight:900;
   text-align: center;
+  padding: 20px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 /* 🟦 Compact 5 cards ek line me */

@@ -17,10 +17,10 @@ const AdminDashboardSidebar = () => {
 
     return (
         <div className="sidebar">
-            <h3 className="sidebar-title">AJMF + Navgurukul</h3>
+            <h3 className="sidebar-title">Admin Panel</h3>
             <ul>
 
-                <li onClick={() => navigate("/admin-dashboard")}>
+                <li className="admin-black" onClick={() => navigate("/admin-dashboard")}>
                     <FaHome /> Dashboard
                 </li>
                 <li onClick={() => navigate("/admin/qr-generator")}>
@@ -43,7 +43,6 @@ const AdminDashboardSidebar = () => {
                  <li onClick={() => navigate("/admin/student-records")}>
                     <FaUserGraduate /> Student Records
                 </li>
-                
                 <li onClick={() => navigate("/admin/reports-endflow")}>
                     <FaFileAlt /> Reports & End Flow
                 </li>

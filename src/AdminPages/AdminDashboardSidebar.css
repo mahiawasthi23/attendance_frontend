@@ -3,14 +3,16 @@
   background: #f5f4f4;
   color: rgb(56, 55, 55);
   height: 100vh;
-  padding: 20px;
+  padding: 15px;
   position: fixed;
+  top:80px;
 }
 
 .sidebar-title {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: bold;
-  margin-bottom: 25px;
+  margin-top: 12px;
+  margin-left: 16px;
 }
 
 .sidebar ul {
@@ -21,7 +23,7 @@
 .sidebar ul li {
   display: flex;
   align-items: center;
-  padding: 18px 2px;
+  padding: 15px 5px;
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
@@ -34,4 +36,9 @@
 .sidebar ul li:hover {
   background: #d2d3d3;
   border-radius: 8px;
+}
+.admin-black{
+    background-color: black;
+    color: white;
+
 }
