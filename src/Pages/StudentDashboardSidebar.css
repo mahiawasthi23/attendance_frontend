@@ -1,4 +1,4 @@
-.student_sidebar {
+/* .student_sidebar {
   width: 220px;
   height: 100vh;
   background-color: #f1f0f0; 
@@ -120,6 +120,147 @@
     justify-content: space-around;
     border-right: none;
     border-top: 2px solid #797878;
+  }
+
+  .student_sidebar_menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .student_sidebar_item {
+    flex-direction: column;
+    font-size: 0.8rem;
+    padding: 0.4rem 0;
+  }
+
+  .student_sidebar_icon {
+    font-size: 1.3rem;
+  }
+} */
+
+
+
+.student_sidebar {
+  width: 220px;
+  height: 100vh;
+  background-color: #ffffff; /* White background for sidebar */
+  color: #111111;            /* Dark text */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.5rem;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  z-index: 100;
+  transition: all 0.3s ease-in-out;
+  border-right: 2px solid #e0e0e0; /* Light gray border */
+}
+
+.student_sidebar_logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111111; /* Dark logo text */
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.student_sidebar_menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.student_sidebar_item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.9rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #111111; /* Default text color */
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.student_sidebar_item:hover {
+  background-color: #f0f0f0; /* Light gray hover */
+  color: #000000;             /* Black text on hover */
+}
+
+.student_sidebar_item.active {
+  background-color: #111111; /* Black active background */
+  color: #ffffff;            /* White active text */
+}
+
+.student_sidebar_icon {
+  font-size: 1.3rem;
+}
+
+/* Scrollbar */
+.student_sidebar_menu::-webkit-scrollbar {
+  width: 6px;
+}
+.student_sidebar_menu::-webkit-scrollbar-thumb {
+  background: #b0b0b0; /* Gray scrollbar thumb */
+  border-radius: 3px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+  .student_sidebar {
+    width: 200px;
+  }
+
+  .student_sidebar_item {
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .student_sidebar_logo {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .student_sidebar {
+    width: 70px;
+    padding-top: 1rem;
+  }
+
+  .student_sidebar_logo {
+    display: none;
+  }
+
+  .student_sidebar_item span:not(.student_sidebar_icon) {
+    display: none;
+  }
+
+  .student_sidebar_icon {
+    font-size: 1.4rem;
+    margin: auto;
+  }
+
+  .student_sidebar_item {
+    justify-content: center;
+    padding: 0.8rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .student_sidebar {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    height: 60px;
+    flex-direction: row;
+    justify-content: space-around;
+    border-right: none;
+    border-top: 2px solid #d0d0d0; /* Light gray top border */
   }
 
   .student_sidebar_menu {
