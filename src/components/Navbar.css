@@ -1,20 +1,15 @@
-:root {
-  --primary-color: rgb(255, 255, 255);
-  --text-color: #f05f40;
-}
-
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: var(--primary-color);
+  background-color: #ffffff; 
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   box-sizing: border-box;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .navbar-container {
@@ -31,13 +26,11 @@
   gap: 10px;
 }
 
-
 .nav-navgurukul-logo {
   height: 100px;
   width: auto;
   transition: all 0.3s ease;
 }
-
 
 .navbar-right {
   display: flex;
@@ -47,11 +40,11 @@
 }
 
 .nav-link {
-  color: var(--text-color);
+  color: #111111;
   text-decoration: none;
   font-weight: 600;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.3rem;
   background: none;
   border: none;
   user-select: none;
@@ -60,13 +53,13 @@
 .nav-link:hover,
 .logout-button:hover {
   text-decoration: underline;
-  color: #ec4a26;
+  color: #555555; 
 }
 
 .logout-button {
   background: none;
   border: none;
-  color: var(--text-color);
+  color: #111111; 
   font-weight: 600;
   cursor: pointer;
 }
@@ -91,7 +84,7 @@
 .hamburger span {
   width: 100%;
   height: 3px;
-  background: #222;
+  background: #111111; 
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -119,8 +112,8 @@
     top: 60px;
     left: 0;
     right: 0;
-    background-color: #fff;
-    border-top: 1px solid #ddd;
+    background-color: #ffffff;
+    border-top: 1px solid #e0e0e0;
     padding: 0rem 1.5rem;
     gap: 0.1rem;
     z-index: 999;
@@ -139,7 +132,6 @@
     padding: 0.5rem 0;
   }
 
-
   .nav-navgurukul-logo {
     height: 40px;
   }
@@ -153,7 +145,6 @@
   .navbar-container {
     padding: 0 1rem;
   }
-
 
   .nav-navgurukul-logo {
     height: 35px;
@@ -169,7 +160,6 @@
   .navbar_logo {
     gap: 6px;
   }
-
 
   .nav-navgurukul-logo {
     height: 30px;

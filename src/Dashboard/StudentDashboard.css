@@ -1,9 +1,9 @@
 .student-dashboard {
   display: flex;
   min-height: 100vh;
-  background: #f7f7f7;
+  background: #f5f5f5; 
+  color: #222;
   font-family: "Poppins", sans-serif;
-  color: #111;
 }
 
 
@@ -25,16 +25,17 @@
 .student-dashboard-content {
   flex: 1;
   margin-left: 250px;
-  padding: 90px 30px 30px; 
   transition: all 0.3s ease-in-out;
+  color: #111;
+  padding: 90px 30px 30px;
 }
 
 .student-dashboard-content h2 {
   font-size: 2.5rem;
-  color: rgb(202, 55, 2);
   margin-bottom: 25px;
-  text-align: center;
+  color: #222;
   font-weight: 600;
+  text-align: center;
 }
 
 
@@ -44,15 +45,16 @@
   text-align: center;
   padding: 50px 100px 100px 100px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+    background: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  color: #111;
 }
 
 .student-status-card h3 {
   font-size: 35px;
-  color: black;
+  color: #111;
   margin-bottom: 15px;
 }
 
@@ -71,48 +73,6 @@
   text-transform: capitalize;
   transition: color 0.3s ease;
 }
-
-
-.student-status-text.present {
-  color: #22c55e; 
-}
-
-.student-status-text.absent {
-  color: #ef4444; 
-}
-
-.student-status-text.on-leave,
-.student-status-text.leave {
-  color: #3b82f6;
-}
-
-.student-status-text.kitchen-turn {
-  color:#f59e0b
-}
-
-.student-status-text.no-status-yet,
-.student-status-text.loading {
-  color: #6b7280;
-}
-
-.student-status-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.student-status-text.present {
-  animation: glowGreen 2s infinite alternate;
-}
-
-@keyframes glowGreen {
-  0% {
-    text-shadow: 0 0 5px #16cb58;
-  }
-  100% {
-    text-shadow: 0 0 15px #0ad253;
-  }
-}
-
 
 @media (max-width: 992px) {
   .student-dashboard-sidebar {
@@ -176,4 +136,57 @@
   }
 
 }
+
+.student-status-text.present {
+  color: #22c55e; 
+}
+
+.student-status-text.absent {
+  color: #dc2626;
+}
+
+.student-status-text.on-leave,
+.student-status-text.on-exam-leave,
+.student-status-text.on-interview-leave,
+.student-status-text.on-casual-leave,
+.student-status-text.on-period-leave,
+.student-status-text.on-special-occasion-leave,
+.student-status-text.on-documentation-leave,
+.student-status-text.on-health-issue {
+  color: #2563eb; 
+}
+
+.student-status-text.kitchen-turn {
+  color: #ca8a04; 
+}
+
+.student-status-text.no-status-yet,
+.student-status-text.loading {
+  color: #6b7280; 
+}
+
+.student-status-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+@keyframes glowGreen {
+  0% {
+    text-shadow: 0 0 5px #22c55e;
+  }
+  100% {
+    text-shadow: 0 0 15px #16a34a;
+  }
+}
+
+@media (max-width: 768px) {
+  .student-dashboard-sidebar {
+    background: #222; 
+  }
+
+  .student-dashboard-content h2 {
+    color: #111;
+  }
+}
+
 

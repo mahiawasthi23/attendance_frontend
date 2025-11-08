@@ -1,8 +1,8 @@
 
 .student-tracking-form-container {
   max-width: 500px;
-  margin: 50px auto;
-  padding: 30px;
+  margin: 100px auto;
+  padding: 20px 30px 30px 30px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
@@ -32,7 +32,7 @@
 
 .student-tracking-form-container input:focus,
 .student-tracking-form-container select:focus {
-  border-color: #007BFF;
+  border-color: #01856b;
   outline: none;
 }
 
@@ -40,7 +40,7 @@
   padding: 12px;
   border: none;
   border-radius: 8px;
-  background-color: #007BFF;
+  background-color: #019d7e;
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -48,7 +48,7 @@
 }
 
 .student-tracking-form-container button:hover {
-  background-color: #0056b3;
+  background-color: #019d7e;
 }
 
 .student-tracking-form-container p {

@@ -1,8 +1,7 @@
-/* ========== Global Container ========== */
 .correction-form {
   max-width: 500px;
   width: 90%;
-  margin: 50px auto;
+  margin: 70px auto;
   padding: 25px 30px;
   background: #ffffff;
   border-radius: 16px;
@@ -11,7 +10,6 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* ========== Heading ========== */
 .correction-form h2 {
   text-align: center;
   font-size: 1.6rem;
@@ -19,48 +17,42 @@
   margin-bottom: 25px;
 }
 
-/* ========== Form ========== */
 .correction-form form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-/* ========== Labels ========== */
 .correction-form label {
   font-weight: 600;
   font-size: 0.95rem;
   color: #333;
 }
 
-/* ========== Inputs ========== */
 .correction-form input[type="date"],
 .correction-form textarea {
   width: 100%;
-  padding: 10px 12px;
   border: 1.5px solid #ccc;
   border-radius: 8px;
   font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s ease;
 }
 
 .correction-form input[type="date"]:focus,
 .correction-form textarea:focus {
-  border-color: #007bff;
+  border-color: #019174;
 }
 
-/* ========== Textarea ========== */
 .correction-form textarea {
   min-height: 100px;
   resize: vertical;
 }
 
-/* ========== Button ========== */
 .correction-form button {
   margin-top: 10px;
   padding: 10px 15px;
-  background-color: #007bff;
+  background-color: #019d7e;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -70,7 +62,7 @@
 }
 
 .correction-form button:hover {
-  background-color: #0056b3;
+  background-color: #01b591;
   transform: translateY(-1px);
 }
 
@@ -79,8 +71,8 @@
   cursor: not-allowed;
 }
 
-/* ========== Message Styles ========== */
-.msg {
+
+.correction-form .msg {
   margin-top: 15px;
   padding: 12px;
   border-radius: 8px;
@@ -89,47 +81,29 @@
   font-size: 0.95rem;
 }
 
-.msg.success {
+.correction-form .msg.success {
   background-color: #e9f9ee;
   color: #1e7e34;
   border: 1px solid #a8e4b0;
 }
 
-.msg.error {
+.correction-form .msg.error {
   background-color: #fdecea;
   color: #b71c1c;
   border: 1px solid #f5b5b5;
 }
 
-/* ========== Responsive Design ========== */
 
-/* Tablets (768px and below) */
+
 @media (max-width: 768px) {
   .correction-form {
     width: 90%;
     padding: 20px;
-    margin: 40px auto;
+    margin: 60px auto;
   }
 
   .correction-form h2 {
     font-size: 1.4rem;
-  }
-
-  .correction-form button {
-    font-size: 0.95rem;
-  }
-}
-
-/* Mobile (480px and below) */
-@media (max-width: 480px) {
-  .correction-form {
-    width: 95%;
-    padding: 18px;
-    margin: 30px auto;
-  }
-
-  .correction-form h2 {
-    font-size: 1.2rem;
   }
 
   .correction-form label {
@@ -139,7 +113,32 @@
   .correction-form input,
   .correction-form textarea {
     font-size: 0.9rem;
-    padding: 8px 10px;
+  }
+
+  .correction-form button {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .correction-form {
+    width: 95%;
+    padding: 18px;
+    margin: 50px auto;
+  }
+
+  .correction-form h2 {
+    font-size: 1.25rem;
+  }
+
+  .correction-form label {
+    font-size: 0.85rem;
+  }
+
+  .correction-form input,
+  .correction-form textarea {
+    font-size: 0.9rem;
+    /* padding: 8px 10px; */
   }
 
   .correction-form button {
@@ -148,15 +147,29 @@
   }
 }
 
+@media (max-width: 360px) {
+  .correction-form {
+    padding: 15px;
+    margin: 40px auto;
+  }
+
+  .correction-form h2 {
+    font-size: 1.1rem;
+  }
+
+  .correction-form button {
+    width: 100%;
+  }
+}
 
 .view-my-corrections {
   margin-top: 20px;
   text-align: center;
 }
 
-.view-btn {
+.view-my-corrections .view-btn {
   display: inline-block;
-  background-color: #007bff;
+  background-color: #019d7e;
   color: white;
   padding: 10px 18px;
   border-radius: 6px;
@@ -165,14 +178,13 @@
   transition: background 0.3s ease;
 }
 
-.view-btn:hover {
-  background-color: #0056b3;
+.view-my-corrections .view-btn:hover {
+  background-color: #01b591;
 }
 
-/* 📱 Responsive for all screens */
 @media (max-width: 600px) {
-  .view-btn {
-    width: 80%;
+  .view-my-corrections .view-btn {
+    width: 90%;
     display: block;
     margin: 0 auto;
   }
